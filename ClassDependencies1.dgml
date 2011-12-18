@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="(@1 @2 @17 Member=(Name=whatsmysteamID @78))" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="whatsmysteamID" />
+    <Node Id="(@1 @2 @30 @107)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Program" />
+    <Node Id="(@21 @22 @19 Member=(Name=Dispose OverloadingParameters=[(@45 @46 Type=Boolean)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsProtected="True" Label="Dispose" />
+    <Node Id="(@21 @40 @38 @107)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="Resources" />
+    <Node Id="(@21 @40 @38 Member=(Name=set_Culture OverloadingParameters=[(@45 Namespace=System.Globalization Type=CultureInfo)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Culture" />
+    <Node Id="(@21 @40 @38 Member=get_Culture)" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Culture" />
+    <Node Id="(@34 @35 @30 @102)" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static Program" />
+    <Node Id="(@34 @35 @30 @107)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Program" />
+    <Node Id="(@34 @35 @30 Member=(Name=Main OverloadingParameters=[(@49 @46 Type=(Name=String ArrayRank=1 ParentType=String))]))" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="Main" />
+    <Node Id="(@5 @37 @38 @107)" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="Resources" />
+    <Node Id="(@5 @37 @38 Member=(Name=set_Culture OverloadingParameters=[(@45 Namespace=System.Globalization Type=CultureInfo)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="set_Culture" />
+    <Node Id="(@5 @37 @38 Member=get_Culture)" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Culture" />
+    <Node Id="(@5 @6 @19 Member=(Name=Dispose OverloadingParameters=[(@45 @46 Type=Boolean)]))" Category="CodeSchema_Method" CodeSchemaProperty_IsProtected="True" Label="Dispose" />
+    <Node Id="(@5 @6 @27 @102)" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static nodestruct" />
+    <Node Id="@10" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClass4" />
+    <Node Id="@100" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="toggleratelimit" />
+    <Node Id="@101" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="uptime" />
+    <Node Id="@103" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static botfunctions" />
+    <Node Id="@104" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static Program" />
+    <Node Id="@105" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static Settings" />
+    <Node Id="@106" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsSpecialName="True" Label="static Settings" />
+    <Node Id="@108" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass11" />
+    <Node Id="@109" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass1" />
+    <Node Id="@11" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClass7" />
+    <Node Id="@110" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass4" />
+    <Node Id="@111" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass4" />
+    <Node Id="@112" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass7" />
+    <Node Id="@113" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClassa" />
+    <Node Id="@114" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClassf" />
+    <Node Id="@115" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="&lt;&gt;c__DisplayClass2" />
+    <Node Id="@116" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Form1" />
+    <Node Id="@117" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Form1" />
+    <Node Id="@118" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Settings" />
+    <Node Id="@119" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="Settings" />
+    <Node Id="@12" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClassa" />
+    <Node Id="@120" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="addfunctionstodict" />
+    <Node Id="@121" Category="CodeSchema_Method" CodeSchemaProperty_IsProtected="True" Label="~nodestruct" />
+    <Node Id="@122" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Default" />
+    <Node Id="@123" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="get_Default" />
+    <Node Id="@124" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ResourceManager" />
+    <Node Id="@125" Category="CodeSchema_Method" CodeSchemaProperty_IsInternal="True" CodeSchemaProperty_IsSpecialName="True" Label="get_ResourceManager" />
+    <Node Id="@126" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="InitializeComponent" />
+    <Node Id="@127" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="InitializeComponent" />
+    <Node Id="@128" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="Main" />
+    <Node Id="@129" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="Main" />
+    <Node Id="@130" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="makeresponse" />
+    <Node Id="@131" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="makeresponse" />
+    <Node Id="@132" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="purgebadnodes" />
+    <Node Id="@133" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="toggledebug" />
+    <Node Id="@134" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="toggleratelimit" />
+    <Node Id="@14" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClassf" />
+    <Node Id="@16" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Program.&lt;&gt;c__DisplayClass2" />
+    <Node Id="@18" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="botfunctions" />
+    <Node Id="@20" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="Form1" />
+    <Node Id="@23" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="Form1" />
+    <Node Id="@25" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="node" />
+    <Node Id="@26" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="node" />
+    <Node Id="@28" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="nodestruct" />
+    <Node Id="@29" Category="CodeSchema_Class" CodeSchemaProperty_IsPublic="True" Group="Expanded" Label="nodestruct" />
+    <Node Id="@31" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Program" />
+    <Node Id="@32" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Program" />
+    <Node Id="@33" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Program" />
+    <Node Id="@36" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Program" />
+    <Node Id="@39" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGeneratedCode="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Resources" />
+    <Node Id="@4" Category="CodeSchema_Class" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClassf.&lt;&gt;c__DisplayClass11" />
+    <Node Id="@41" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGeneratedCode="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Resources" />
+    <Node Id="@43" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGeneratedCode="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Settings" />
+    <Node Id="@44" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsGeneratedCode="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="Settings" />
+    <Node Id="@47" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;makeresponse&gt;b__1" />
+    <Node Id="@48" Category="CodeSchema_Method" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Label="&lt;makeresponse&gt;b__2" />
+    <Node Id="@50" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="Main" />
+    <Node Id="@51" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="runparse" />
+    <Node Id="@52" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="runparse" />
+    <Node Id="@53" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="nodestruct" />
+    <Node Id="@54" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;runparse&gt;b__0" />
+    <Node Id="@56" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;purgebadnodes&gt;b__c" />
+    <Node Id="@57" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;purgebadnodes&gt;b__d" />
+    <Node Id="@58" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;purgebadnodes&gt;b__e" />
+    <Node Id="@59" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;runparse&gt;b__6" />
+    <Node Id="@62" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="node" />
+    <Node Id="@63" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;interactsteam&gt;b__0" />
+    <Node Id="@64" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="&lt;interactsteam&gt;b__1" />
+    <Node Id="@65" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="loadplayback" />
+    <Node Id="@66" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="parsestring" />
+    <Node Id="@67" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="parsestring" />
+    <Node Id="@68" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="respondto" />
+    <Node Id="@69" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="saveplayback" />
+    <Node Id="@7" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClass1" />
+    <Node Id="@70" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="StartsWithCapital" />
+    <Node Id="@71" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="stripnames" />
+    <Node Id="@72" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="transceive" />
+    <Node Id="@73" Category="CodeSchema_Method" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" Label="node" />
+    <Node Id="@75" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="textBox1_KeyDown" />
+    <Node Id="@76" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="textBox1_KeyDown" />
+    <Node Id="@77" Category="CodeSchema_Method" CodeSchemaProperty_IsPrivate="True" Label="interactsteam" />
+    <Node Id="@79" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="addurl" />
+    <Node Id="@80" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="AskWolframAlpha" />
+    <Node Id="@81" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="calc" />
+    <Node Id="@82" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="changexml" />
+    <Node Id="@83" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="eightball" />
+    <Node Id="@84" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="getslapcount" />
+    <Node Id="@85" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="geturl" />
+    <Node Id="@86" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="loadmemfile" />
+    <Node Id="@87" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="loadnow" />
+    <Node Id="@88" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="printxml" />
+    <Node Id="@89" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="purgenow" />
+    <Node Id="@9" Category="CodeSchema_Class" CodeSchemaProperty_IsCompilerGenerated="True" CodeSchemaProperty_IsPrivate="True" Group="Expanded" Label="nodestruct.&lt;&gt;c__DisplayClass4" />
+    <Node Id="@90" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="removeconjunction" />
+    <Node Id="@91" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="roll" />
+    <Node Id="@92" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="savenow" />
+    <Node Id="@93" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="SetMaxSentenceLength" />
+    <Node Id="@94" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="setratelimit" />
+    <Node Id="@95" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="ShutdownGracefully" />
+    <Node Id="@96" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="slap" />
+    <Node Id="@97" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="statusreport" />
+    <Node Id="@98" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="statusword" />
+    <Node Id="@99" Category="CodeSchema_Method" CodeSchemaProperty_IsPublic="True" Label="toggledebug" />
+  </Nodes>
+  <Links>
+    <Link Source="@10" Target="@111" Category="Contains" />
+    <Link Source="@10" Target="@47" Category="Contains" />
+    <Link Source="@100" Target="@134" Category="CodeSchema_Calls" />
+    <Link Source="@103" Target="@32" Category="References" />
+    <Link Source="@104" Target="@53" Category="CodeSchema_Calls" />
+    <Link Source="@105" Target="@118" Category="CodeSchema_Calls" />
+    <Link Source="@106" Target="@119" Category="CodeSchema_Calls" />
+    <Link Source="@11" Target="@112" Category="Contains" />
+    <Link Source="@116" Target="@126" Category="CodeSchema_Calls" />
+    <Link Source="@116" Target="@66" Category="CodeSchema_Calls" />
+    <Link Source="@116" Target="@75" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@117" Target="@127" Category="CodeSchema_Calls" />
+    <Link Source="@117" Target="@76" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@12" Target="@11" Category="References" />
+    <Link Source="@12" Target="@113" Category="Contains" />
+    <Link Source="@12" Target="@59" Category="Contains" />
+    <Link Source="@120" Target="@100" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@101" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@79" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@80" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@81" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@82" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@83" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@84" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@85" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@86" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@87" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@88" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@89" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@90" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@91" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@92" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@93" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@94" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@95" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@96" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@97" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@98" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@120" Target="@99" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@121" Target="@69" Category="CodeSchema_Calls" />
+    <Link Source="@122" Target="@43" Category="CodeSchema_ReturnTypeLink" />
+    <Link Source="@123" Target="@44" Category="CodeSchema_ReturnTypeLink" />
+    <Link Source="@124" Target="@39" Category="References" />
+    <Link Source="@125" Target="@41" Category="References" />
+    <Link Source="@128" Target="@116" Category="CodeSchema_Calls" />
+    <Link Source="@129" Target="@117" Category="CodeSchema_Calls" />
+    <Link Source="@130" Target="@25" Category="References" />
+    <Link Source="@131" Target="@10" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@131" Target="@111" Category="CodeSchema_Calls" />
+    <Link Source="@131" Target="@26" Category="References" />
+    <Link Source="@131" Target="@47" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@131" Target="@48" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@131" Target="@70" Category="CodeSchema_Calls" />
+    <Link Source="@132" Target="@114" Category="CodeSchema_Calls" />
+    <Link Source="@132" Target="@14" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@132" Target="@26" Category="References" />
+    <Link Source="@132" Target="@56" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@132" Target="@57" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@14" Target="@114" Category="Contains" />
+    <Link Source="@14" Target="@4" Category="Contains" />
+    <Link Source="@14" Target="@56" Category="Contains" />
+    <Link Source="@14" Target="@57" Category="Contains" />
+    <Link Source="@16" Target="@115" Category="Contains" />
+    <Link Source="@16" Target="@63" Category="Contains" />
+    <Link Source="@16" Target="@64" Category="Contains" />
+    <Link Source="@18" Target="(@1 @2 @17 Member=(Name=whatsmysteamID @78))" Category="Contains" />
+    <Link Source="@18" Target="@100" Category="Contains" />
+    <Link Source="@18" Target="@101" Category="Contains" />
+    <Link Source="@18" Target="@103" Category="Contains" />
+    <Link Source="@18" Target="@79" Category="Contains" />
+    <Link Source="@18" Target="@80" Category="Contains" />
+    <Link Source="@18" Target="@81" Category="Contains" />
+    <Link Source="@18" Target="@82" Category="Contains" />
+    <Link Source="@18" Target="@83" Category="Contains" />
+    <Link Source="@18" Target="@84" Category="Contains" />
+    <Link Source="@18" Target="@85" Category="Contains" />
+    <Link Source="@18" Target="@86" Category="Contains" />
+    <Link Source="@18" Target="@87" Category="Contains" />
+    <Link Source="@18" Target="@88" Category="Contains" />
+    <Link Source="@18" Target="@89" Category="Contains" />
+    <Link Source="@18" Target="@90" Category="Contains" />
+    <Link Source="@18" Target="@91" Category="Contains" />
+    <Link Source="@18" Target="@92" Category="Contains" />
+    <Link Source="@18" Target="@93" Category="Contains" />
+    <Link Source="@18" Target="@94" Category="Contains" />
+    <Link Source="@18" Target="@95" Category="Contains" />
+    <Link Source="@18" Target="@96" Category="Contains" />
+    <Link Source="@18" Target="@97" Category="Contains" />
+    <Link Source="@18" Target="@98" Category="Contains" />
+    <Link Source="@18" Target="@99" Category="Contains" />
+    <Link Source="@20" Target="(@5 @6 @19 Member=(Name=Dispose OverloadingParameters=[(@45 @46 Type=Boolean)]))" Category="Contains" />
+    <Link Source="@20" Target="@116" Category="Contains" />
+    <Link Source="@20" Target="@126" Category="Contains" />
+    <Link Source="@20" Target="@75" Category="Contains" />
+    <Link Source="@23" Target="(@21 @22 @19 Member=(Name=Dispose OverloadingParameters=[(@45 @46 Type=Boolean)]))" Category="Contains" />
+    <Link Source="@23" Target="@117" Category="Contains" />
+    <Link Source="@23" Target="@127" Category="Contains" />
+    <Link Source="@23" Target="@72" Category="Contains" />
+    <Link Source="@23" Target="@76" Category="Contains" />
+    <Link Source="@25" Target="@73" Category="Contains" />
+    <Link Source="@26" Target="@62" Category="Contains" />
+    <Link Source="@28" Target="(@5 @6 @27 @102)" Category="Contains" />
+    <Link Source="@28" Target="@130" Category="Contains" />
+    <Link Source="@28" Target="@51" Category="Contains" />
+    <Link Source="@28" Target="@66" Category="Contains" />
+    <Link Source="@28" Target="@7" Category="Contains" />
+    <Link Source="@28" Target="@9" Category="Contains" />
+    <Link Source="@29" Target="@10" Category="Contains" />
+    <Link Source="@29" Target="@11" Category="Contains" />
+    <Link Source="@29" Target="@12" Category="Contains" />
+    <Link Source="@29" Target="@121" Category="Contains" />
+    <Link Source="@29" Target="@131" Category="Contains" />
+    <Link Source="@29" Target="@132" Category="Contains" />
+    <Link Source="@29" Target="@133" Category="Contains" />
+    <Link Source="@29" Target="@134" Category="Contains" />
+    <Link Source="@29" Target="@14" Category="Contains" />
+    <Link Source="@29" Target="@48" Category="Contains" />
+    <Link Source="@29" Target="@52" Category="Contains" />
+    <Link Source="@29" Target="@53" Category="Contains" />
+    <Link Source="@29" Target="@65" Category="Contains" />
+    <Link Source="@29" Target="@67" Category="Contains" />
+    <Link Source="@29" Target="@68" Category="Contains" />
+    <Link Source="@29" Target="@69" Category="Contains" />
+    <Link Source="@29" Target="@70" Category="Contains" />
+    <Link Source="@29" Target="@71" Category="Contains" />
+    <Link Source="@31" Target="@128" Category="Contains" />
+    <Link Source="@32" Target="(@1 @2 @30 @107)" Category="Contains" />
+    <Link Source="@32" Target="@104" Category="Contains" />
+    <Link Source="@32" Target="@120" Category="Contains" />
+    <Link Source="@32" Target="@16" Category="Contains" />
+    <Link Source="@32" Target="@29" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@32" Target="@50" Category="Contains" />
+    <Link Source="@32" Target="@77" Category="Contains" />
+    <Link Source="@33" Target="@129" Category="Contains" />
+    <Link Source="@36" Target="(@34 @35 @30 @102)" Category="Contains" />
+    <Link Source="@36" Target="(@34 @35 @30 @107)" Category="Contains" />
+    <Link Source="@36" Target="(@34 @35 @30 Member=(Name=Main OverloadingParameters=[(@49 @46 Type=(Name=String ArrayRank=1 ParentType=String))]))" Category="Contains" />
+    <Link Source="@39" Target="(@5 @37 @38 @107)" Category="Contains" />
+    <Link Source="@39" Target="(@5 @37 @38 Member=(Name=set_Culture OverloadingParameters=[(@45 Namespace=System.Globalization Type=CultureInfo)]))" Category="Contains" />
+    <Link Source="@39" Target="(@5 @37 @38 Member=get_Culture)" Category="Contains" />
+    <Link Source="@39" Target="@124" Category="Contains" />
+    <Link Source="@4" Target="@108" Category="Contains" />
+    <Link Source="@4" Target="@14" Category="References" />
+    <Link Source="@4" Target="@26" Category="References" />
+    <Link Source="@4" Target="@58" Category="Contains" />
+    <Link Source="@41" Target="(@21 @40 @38 @107)" Category="Contains" />
+    <Link Source="@41" Target="(@21 @40 @38 Member=(Name=set_Culture OverloadingParameters=[(@45 Namespace=System.Globalization Type=CultureInfo)]))" Category="Contains" />
+    <Link Source="@41" Target="(@21 @40 @38 Member=get_Culture)" Category="Contains" />
+    <Link Source="@41" Target="@125" Category="Contains" />
+    <Link Source="@43" Target="@105" Category="Contains" />
+    <Link Source="@43" Target="@118" Category="Contains" />
+    <Link Source="@43" Target="@122" Category="Contains" />
+    <Link Source="@43" Target="@43" Category="References" />
+    <Link Source="@44" Target="@106" Category="Contains" />
+    <Link Source="@44" Target="@119" Category="Contains" />
+    <Link Source="@44" Target="@123" Category="Contains" />
+    <Link Source="@44" Target="@44" Category="References" />
+    <Link Source="@50" Target="@120" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@131" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@29" Category="References" />
+    <Link Source="@50" Target="@65" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@67" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@69" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@77" Category="CodeSchema_Calls" />
+    <Link Source="@50" Target="@87" Category="CodeSchema_Calls" />
+    <Link Source="@51" Target="@109" Category="CodeSchema_Calls" />
+    <Link Source="@51" Target="@110" Category="CodeSchema_Calls" />
+    <Link Source="@51" Target="@25" Category="References" />
+    <Link Source="@51" Target="@54" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@51" Target="@7" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@51" Target="@73" Category="CodeSchema_Calls" />
+    <Link Source="@51" Target="@9" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@52" Target="@11" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@52" Target="@112" Category="CodeSchema_Calls" />
+    <Link Source="@52" Target="@113" Category="CodeSchema_Calls" />
+    <Link Source="@52" Target="@12" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@52" Target="@26" Category="References" />
+    <Link Source="@52" Target="@59" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@52" Target="@62" Category="CodeSchema_Calls" />
+    <Link Source="@53" Target="@67" Category="CodeSchema_Calls" />
+    <Link Source="@54" Target="@25" Category="References" />
+    <Link Source="@54" Target="@7" Category="References" />
+    <Link Source="@57" Target="@108" Category="CodeSchema_Calls" />
+    <Link Source="@57" Target="@26" Category="References" />
+    <Link Source="@57" Target="@4" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@57" Target="@58" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@58" Target="@14" Category="References" />
+    <Link Source="@59" Target="@11" Category="References" />
+    <Link Source="@59" Target="@26" Category="References" />
+    <Link Source="@65" Target="@132" Category="CodeSchema_Calls" />
+    <Link Source="@65" Target="@67" Category="CodeSchema_Calls" />
+    <Link Source="@66" Target="@51" Category="CodeSchema_Calls" />
+    <Link Source="@67" Target="@132" Category="CodeSchema_Calls" />
+    <Link Source="@67" Target="@52" Category="CodeSchema_Calls" />
+    <Link Source="@68" Target="@131" Category="CodeSchema_Calls" />
+    <Link Source="@7" Target="@109" Category="Contains" />
+    <Link Source="@75" Target="@130" Category="CodeSchema_Calls" />
+    <Link Source="@75" Target="@66" Category="CodeSchema_Calls" />
+    <Link Source="@76" Target="@72" Category="CodeSchema_Calls" />
+    <Link Source="@77" Target="@115" Category="CodeSchema_Calls" />
+    <Link Source="@77" Target="@131" Category="CodeSchema_Calls" />
+    <Link Source="@77" Target="@16" Category="References">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FunctionPointer" />
+    </Link>
+    <Link Source="@77" Target="@63" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@77" Target="@64" Category="CodeSchema_FunctionPointer" />
+    <Link Source="@77" Target="@67" Category="CodeSchema_Calls" />
+    <Link Source="@77" Target="@71" Category="CodeSchema_Calls" />
+    <Link Source="@77" Target="@92" Category="CodeSchema_Calls" />
+    <Link Source="@83" Target="@29" Category="References" />
+    <Link Source="@86" Target="@65" Category="CodeSchema_Calls" />
+    <Link Source="@89" Target="@132" Category="CodeSchema_Calls" />
+    <Link Source="@89" Target="@29" Category="References" />
+    <Link Source="@9" Target="@110" Category="Contains" />
+    <Link Source="@9" Target="@54" Category="Contains" />
+    <Link Source="@9" Target="@7" Category="References" />
+    <Link Source="@90" Target="@26" Category="References" />
+    <Link Source="@90" Target="@29" Category="References" />
+    <Link Source="@93" Target="@29" Category="References" />
+    <Link Source="@94" Target="@29" Category="References" />
+    <Link Source="@95" Target="@69" Category="CodeSchema_Calls" />
+    <Link Source="@95" Target="@92" Category="CodeSchema_Calls" />
+    <Link Source="@97" Target="@29" Category="References" />
+    <Link Source="@98" Target="@26" Category="References" />
+    <Link Source="@98" Target="@29" Category="References" />
+    <Link Source="@99" Target="@133" Category="CodeSchema_Calls" />
+  </Links>
+  <Categories>
+    <Category Id="CodeSchema_Block" Label="Block" BasedOn="CodeSchema_Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Blocks" />
+    <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
+    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Classes" />
+    <Category Id="CodeSchema_FunctionPointer" Label="Function Pointer" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Function Pointers" OutgoingActionLabel="Function Pointers" />
+    <Category Id="CodeSchema_Member" Label="Member" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Field" IsProviderRoot="False" NavigationActionLabel="Members" />
+    <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" CanBeDataDriven="True" DefaultAction="Link:Forward:CodeSchema_Calls" Icon="CodeSchema_Method" IsProviderRoot="False" NavigationActionLabel="Methods" />
+    <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
+    <Category Id="CodeSchema_Statement" Label="Statement" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" IsProviderRoot="False" NavigationActionLabel="Statement" />
+    <Category Id="CodeSchema_Type" Label="Type" BasedOn="CodeSchema_Block" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" IsProviderRoot="False" NavigationActionLabel="Types" />
+    <Category Id="Contains" Label="Contains" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+    <Category Id="References" Label="References" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
+  </Categories>
+  <Properties>
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsCompilerGenerated" Label="IsCompilerGenerated" Description="IsCompilerGenerated" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsConstructor" Label="IsConstructor" Description="IsConstructor" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsGeneratedCode" Label="IsGeneratedCode" Description="IsGeneratedCode" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsInternal" Label="IsInternal" Description="IsInternal" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPrivate" Label="IsPrivate" Description="IsPrivate" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsProtected" Label="IsProtected" Description="IsProtected" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsPublic" Label="IsPublic" Description="IsPublic" DataType="System.Boolean" />
+    <Property Id="CodeSchemaProperty_IsSpecialName" Label="IsSpecialName" Description="IsSpecialName" DataType="System.Boolean" />
+    <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
+    <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.Progression.GraphModel.GroupStyle" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+  </Properties>
+  <QualifiedNames>
+    <Name Id="ArrayRank" Label="Array Rank" ValueType="System.String" />
+    <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
+    <Name Id="GenericArguments" Label="Generic Arguments" ValueType="Microsoft.VisualStudio.Progression.GraphModel.QualifiedIdentifierArrayCollection" />
+    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
+    <Name Id="Member" Label="Member" ValueType="System.Object" />
+    <Name Id="Name" Label="Name" ValueType="System.String" />
+    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
+    <Name Id="OverloadingParameters" Label="Parameter" ValueType="Microsoft.VisualStudio.Progression.GraphModel.QualifiedIdentifierArrayCollection" Formatter="NameValueNoEscape" />
+    <Name Id="ParentType" Label="Parent Type" ValueType="System.Object" />
+    <Name Id="Type" Label="Type" ValueType="System.Object" />
+  </QualifiedNames>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Assembly" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Assembly')" />
+      <Setter Property="Background" Value="#1C3068" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Namespace" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+      <Setter Property="Background" Value="#4A65A0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Type" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Type')" />
+      <Setter Property="Background" Value="#D3DCEF" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Method" ValueLabel="Has category">
+      <Condition Expression="HasCategory('CodeSchema_Method')" />
+      <Setter Property="Background" Value="#FFE0E0E0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Generics" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Generics')" />
+      <Setter Property="Background" Value="#FFA080A0" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Externals" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Externals')" />
+      <Setter Property="Background" Value="#FFA08080" />
+    </Style>
+  </Styles>
+  <IdentifierAliases>
+    <Alias n="1" Uri="Assembly=$(79645ef6-a498-4c7e-b785-bb89787e16d8.OutputPathUri)" />
+    <Alias n="2" Id="Namespace=Networkbot" />
+    <Alias n="3" Id="ParentType=nodestruct" />
+    <Alias n="4" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClass11 ParentType=(Name=&lt;&gt;c__DisplayClassf @3)))" />
+    <Alias n="5" Uri="Assembly=$(939985ee-1a31-4797-a4ea-66c4f9bea415.OutputPathUri)" />
+    <Alias n="6" Id="Namespace=Bottest_2011" />
+    <Alias n="7" Id="(@5 @6 Type=(Name=&lt;&gt;c__DisplayClass1 @3))" />
+    <Alias n="8" Id="Type=(Name=&lt;&gt;c__DisplayClass4 @3)" />
+    <Alias n="9" Id="(@5 @6 @8)" />
+    <Alias n="10" Id="(@1 @2 @8)" />
+    <Alias n="11" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClass7 @3))" />
+    <Alias n="12" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClassa @3))" />
+    <Alias n="13" Id="Type=(Name=&lt;&gt;c__DisplayClassf @3)" />
+    <Alias n="14" Id="(@1 @2 @13)" />
+    <Alias n="15" Id="Type=(Name=&lt;&gt;c__DisplayClass2 ParentType=Program)" />
+    <Alias n="16" Id="(@1 @2 @15)" />
+    <Alias n="17" Id="Type=botfunctions" />
+    <Alias n="18" Id="(@1 @2 @17)" />
+    <Alias n="19" Id="Type=Form1" />
+    <Alias n="20" Id="(@5 @6 @19)" />
+    <Alias n="21" Uri="Assembly=$(5453a77f-6c88-422a-bfe3-0d652d9b84f0.OutputPathUri)" />
+    <Alias n="22" Id="Namespace=NetworkbotClienttest" />
+    <Alias n="23" Id="(@21 @22 @19)" />
+    <Alias n="24" Id="Type=node" />
+    <Alias n="25" Id="(@5 @6 @24)" />
+    <Alias n="26" Id="(@1 @2 @24)" />
+    <Alias n="27" Id="Type=nodestruct" />
+    <Alias n="28" Id="(@5 @6 @27)" />
+    <Alias n="29" Id="(@1 @2 @27)" />
+    <Alias n="30" Id="Type=Program" />
+    <Alias n="31" Id="(@5 @6 @30)" />
+    <Alias n="32" Id="(@1 @2 @30)" />
+    <Alias n="33" Id="(@21 @22 @30)" />
+    <Alias n="34" Uri="Assembly=$(ed85f455-db16-4d72-92a6-e101ab97ab18.OutputPathUri)" />
+    <Alias n="35" Id="Namespace=OnyTwitter" />
+    <Alias n="36" Id="(@34 @35 @30)" />
+    <Alias n="37" Id="Namespace=Bottest_2011.Properties" />
+    <Alias n="38" Id="Type=Resources" />
+    <Alias n="39" Id="(@5 @37 @38)" />
+    <Alias n="40" Id="Namespace=NetworkbotClienttest.Properties" />
+    <Alias n="41" Id="(@21 @40 @38)" />
+    <Alias n="42" Id="Type=Settings" />
+    <Alias n="43" Id="(@5 @37 @42)" />
+    <Alias n="44" Id="(@21 @40 @42)" />
+    <Alias n="45" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/Profile/Client/mscorlib.dll" />
+    <Alias n="46" Id="Namespace=System" />
+    <Alias n="47" Id="(@1 @2 @8 Member=(Name=&lt;makeresponse&gt;b__1 OverloadingParameters=[(@45 Namespace=System.Collections.Generic Type=(Name=KeyValuePair GenericParameterCount=2 GenericArguments=[@26,(@45 @46 Type=Int32)]))]))" />
+    <Alias n="48" Id="(@1 @2 @27 Member=(Name=&lt;makeresponse&gt;b__2 OverloadingParameters=[(@45 Namespace=System.Collections.Generic Type=(Name=KeyValuePair GenericParameterCount=2 GenericArguments=[@26,(@45 @46 Type=Int32)]))]))" />
+    <Alias n="49" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/mscorlib.dll" />
+    <Alias n="50" Id="(@1 @2 @30 Member=(Name=Main OverloadingParameters=[(@45 @46 Type=(Name=String ArrayRank=1 ParentType=String))]))" />
+    <Alias n="51" Id="(@5 @6 @27 Member=(Name=runparse OverloadingParameters=[(@45 @46 Type=(Name=String ArrayRank=1 ParentType=String))]))" />
+    <Alias n="52" Id="(@1 @2 @27 Member=(Name=runparse OverloadingParameters=[(@45 @46 Type=(Name=String ArrayRank=1 ParentType=String))]))" />
+    <Alias n="53" Id="(@1 @2 @27 Member=(Name=.ctor OverloadingParameters=[(@45 @46 Type=Boolean)]))" />
+    <Alias n="54" Id="(@5 @6 @8 Member=(Name=&lt;runparse&gt;b__0 OverloadingParameters=[@25]))" />
+    <Alias n="55" Id="OverloadingParameters=[@26]" />
+    <Alias n="56" Id="(@1 @2 @13 Member=(Name=&lt;purgebadnodes&gt;b__c @55))" />
+    <Alias n="57" Id="(@1 @2 @13 Member=(Name=&lt;purgebadnodes&gt;b__d @55))" />
+    <Alias n="58" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClass11 ParentType=(Name=&lt;&gt;c__DisplayClassf @3)) Member=(Name=&lt;purgebadnodes&gt;b__e @55))" />
+    <Alias n="59" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClassa @3) Member=(Name=&lt;runparse&gt;b__6 @55))" />
+    <Alias n="60" Id="(@45 @46 Type=String)" />
+    <Alias n="61" Id="OverloadingParameters=[@60]" />
+    <Alias n="62" Id="(@1 @2 @24 Member=(Name=.ctor @61))" />
+    <Alias n="63" Id="(@1 @2 @15 Member=(Name=&lt;interactsteam&gt;b__0 @61))" />
+    <Alias n="64" Id="(@1 @2 @15 Member=(Name=&lt;interactsteam&gt;b__1 @61))" />
+    <Alias n="65" Id="(@1 @2 @27 Member=(Name=loadplayback @61))" />
+    <Alias n="66" Id="(@5 @6 @27 Member=(Name=parsestring @61))" />
+    <Alias n="67" Id="(@1 @2 @27 Member=(Name=parsestring @61))" />
+    <Alias n="68" Id="(@1 @2 @27 Member=(Name=respondto @61))" />
+    <Alias n="69" Id="(@1 @2 @27 Member=(Name=saveplayback @61))" />
+    <Alias n="70" Id="(@1 @2 @27 Member=(Name=StartsWithCapital @61))" />
+    <Alias n="71" Id="(@1 @2 @27 Member=(Name=stripnames @61))" />
+    <Alias n="72" Id="(@21 @22 @19 Member=(Name=transceive @61))" />
+    <Alias n="73" Id="(@5 @6 @24 Member=(Name=.ctor OverloadingParameters=[@60,(@45 @46 Type=Int32)]))" />
+    <Alias n="74" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.0/Profile/Client/System.Windows.Forms.dll" />
+    <Alias n="75" Id="(@5 @6 @19 Member=(Name=textBox1_KeyDown OverloadingParameters=[(@45 @46 Type=Object),(@74 Namespace=System.Windows.Forms Type=KeyEventArgs)]))" />
+    <Alias n="76" Id="(@21 @22 @19 Member=(Name=textBox1_KeyDown OverloadingParameters=[(@45 @46 Type=Object),(@74 Namespace=System.Windows.Forms Type=KeyEventArgs)]))" />
+    <Alias n="77" Id="(@1 @2 @30 Member=(Name=interactsteam OverloadingParameters=[@60,@60]))" />
+    <Alias n="78" Id="OverloadingParameters=[@29,@60,@60]" />
+    <Alias n="79" Id="(@1 @2 @17 Member=(Name=addurl @78))" />
+    <Alias n="80" Id="(@1 @2 @17 Member=(Name=AskWolframAlpha @78))" />
+    <Alias n="81" Id="(@1 @2 @17 Member=(Name=calc @78))" />
+    <Alias n="82" Id="(@1 @2 @17 Member=(Name=changexml @78))" />
+    <Alias n="83" Id="(@1 @2 @17 Member=(Name=eightball @78))" />
+    <Alias n="84" Id="(@1 @2 @17 Member=(Name=getslapcount @78))" />
+    <Alias n="85" Id="(@1 @2 @17 Member=(Name=geturl @78))" />
+    <Alias n="86" Id="(@1 @2 @17 Member=(Name=loadmemfile @78))" />
+    <Alias n="87" Id="(@1 @2 @17 Member=(Name=loadnow @78))" />
+    <Alias n="88" Id="(@1 @2 @17 Member=(Name=printxml @78))" />
+    <Alias n="89" Id="(@1 @2 @17 Member=(Name=purgenow @78))" />
+    <Alias n="90" Id="(@1 @2 @17 Member=(Name=removeconjunction @78))" />
+    <Alias n="91" Id="(@1 @2 @17 Member=(Name=roll @78))" />
+    <Alias n="92" Id="(@1 @2 @17 Member=(Name=savenow @78))" />
+    <Alias n="93" Id="(@1 @2 @17 Member=(Name=SetMaxSentenceLength @78))" />
+    <Alias n="94" Id="(@1 @2 @17 Member=(Name=setratelimit @78))" />
+    <Alias n="95" Id="(@1 @2 @17 Member=(Name=ShutdownGracefully @78))" />
+    <Alias n="96" Id="(@1 @2 @17 Member=(Name=slap @78))" />
+    <Alias n="97" Id="(@1 @2 @17 Member=(Name=statusreport @78))" />
+    <Alias n="98" Id="(@1 @2 @17 Member=(Name=statusword @78))" />
+    <Alias n="99" Id="(@1 @2 @17 Member=(Name=toggledebug @78))" />
+    <Alias n="100" Id="(@1 @2 @17 Member=(Name=toggleratelimit @78))" />
+    <Alias n="101" Id="(@1 @2 @17 Member=(Name=uptime @78))" />
+    <Alias n="102" Id="Member=.cctor" />
+    <Alias n="103" Id="(@1 @2 @17 @102)" />
+    <Alias n="104" Id="(@1 @2 @30 @102)" />
+    <Alias n="105" Id="(@5 @37 @42 @102)" />
+    <Alias n="106" Id="(@21 @40 @42 @102)" />
+    <Alias n="107" Id="Member=.ctor" />
+    <Alias n="108" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClass11 ParentType=(Name=&lt;&gt;c__DisplayClassf @3)) @107)" />
+    <Alias n="109" Id="(@5 @6 Type=(Name=&lt;&gt;c__DisplayClass1 @3) @107)" />
+    <Alias n="110" Id="(@5 @6 @8 @107)" />
+    <Alias n="111" Id="(@1 @2 @8 @107)" />
+    <Alias n="112" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClass7 @3) @107)" />
+    <Alias n="113" Id="(@1 @2 Type=(Name=&lt;&gt;c__DisplayClassa @3) @107)" />
+    <Alias n="114" Id="(@1 @2 @13 @107)" />
+    <Alias n="115" Id="(@1 @2 @15 @107)" />
+    <Alias n="116" Id="(@5 @6 @19 @107)" />
+    <Alias n="117" Id="(@21 @22 @19 @107)" />
+    <Alias n="118" Id="(@5 @37 @42 @107)" />
+    <Alias n="119" Id="(@21 @40 @42 @107)" />
+    <Alias n="120" Id="(@1 @2 @30 Member=addfunctionstodict)" />
+    <Alias n="121" Id="(@1 @2 @27 Member=Finalize)" />
+    <Alias n="122" Id="(@5 @37 @42 Member=get_Default)" />
+    <Alias n="123" Id="(@21 @40 @42 Member=get_Default)" />
+    <Alias n="124" Id="(@5 @37 @38 Member=get_ResourceManager)" />
+    <Alias n="125" Id="(@21 @40 @38 Member=get_ResourceManager)" />
+    <Alias n="126" Id="(@5 @6 @19 Member=InitializeComponent)" />
+    <Alias n="127" Id="(@21 @22 @19 Member=InitializeComponent)" />
+    <Alias n="128" Id="(@5 @6 @30 Member=Main)" />
+    <Alias n="129" Id="(@21 @22 @30 Member=Main)" />
+    <Alias n="130" Id="(@5 @6 @27 Member=makeresponse)" />
+    <Alias n="131" Id="(@1 @2 @27 Member=makeresponse)" />
+    <Alias n="132" Id="(@1 @2 @27 Member=purgebadnodes)" />
+    <Alias n="133" Id="(@1 @2 @27 Member=toggledebug)" />
+    <Alias n="134" Id="(@1 @2 @27 Member=toggleratelimit)" />
+  </IdentifierAliases>
+  <Paths>
+    <Path Id="5453a77f-6c88-422a-bfe3-0d652d9b84f0.OutputPathUri" Value="file:///C:/Users/Ced/Desktop/BZR/Programming/Projects/2011 july - now/Onymity/NetworkbotClienttest/bin/Release/NetworkbotClienttest.exe" />
+    <Path Id="79645ef6-a498-4c7e-b785-bb89787e16d8.OutputPathUri" Value="file:///C:/Users/Ced/Desktop/BZR/Programming/Projects/2011 july - now/Onymity/Networkbot/bin/Release/Networkbot.exe" />
+    <Path Id="939985ee-1a31-4797-a4ea-66c4f9bea415.OutputPathUri" Value="file:///C:/Users/Ced/Desktop/BZR/Programming/Projects/2011 july - now/Onymity/Bottest 2011/bin/Release/Bottest 2011.exe" />
+    <Path Id="ed85f455-db16-4d72-92a6-e101ab97ab18.OutputPathUri" Value="file:///C:/Users/Ced/Desktop/BZR/Programming/Projects/2011 july - now/Onymity/OnyTwitter/bin/Release/OnyTwitter.exe" />
+    <Path Id="FxReferenceAssembliesUri" Value="file:///C:/Program Files (x86)/Reference Assemblies/Microsoft/Framework" />
+  </Paths>
+</DirectedGraph>

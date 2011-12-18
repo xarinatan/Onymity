@@ -1,0 +1,21 @@
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\Networkbot.exe
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\Networkbot.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\Networkbot.exe
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\Networkbot.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\CedLib.dll
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\CedLib.pdb
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\Networkbot.exe
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\Networkbot.pdb
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\Networkbot.exe
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\Networkbot.pdb
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\CedLib.dll
+C:\Kaas\Programming\Projects\2011 july - now\Bottest 2011\Networkbot\bin\Debug\CedLib.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\obj\x86\Debug\Networkbot.exe
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\obj\x86\Debug\Networkbot.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\bin\Debug\Networkbot.exe
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\bin\Debug\Networkbot.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\bin\Debug\CedLib.dll
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\bin\Debug\CedLib.pdb
+C:\Users\Ced\Desktop\BZR\Programming\Projects\2011 july - now\Onymity\Networkbot\obj\x86\Debug\ResolveAssemblyReference.cache
