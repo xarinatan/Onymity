@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networkbot", "Networkbot\Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkbotClienttest", "NetworkbotClienttest\NetworkbotClienttest.csproj", "{5453A77F-6C88-422A-BFE3-0D652D9B84F0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BotThingy", "BotThingy\BotThingy\BotThingy.vcxproj", "{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BotThingy", "SteamConnector\BotThingy\BotThingy.vcxproj", "{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnyTwitter", "OnyTwitter\OnyTwitter.csproj", "{ED85F455-DB16-4D72-92A6-E101AB97AB18}"
 EndProject

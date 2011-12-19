@@ -27,7 +27,7 @@ namespace NetworkbotClienttest
         string transceive(string sendstring)
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            s.Connect("localhost", 5000);
+            s.Connect("nicolas.ced", 5000);
             CedLib.Networking.socketfunctions.sendstring(s, "interactsteam\n" + textBox_steamID.Text + "\n" + textBox_steamname.Text + "\n" + textBox_chattype.Text  + "\n" + sendstring);
             if (CedLib.Networking.socketfunctions.waitfordata(s, 30000, false))
             {

@@ -11,22 +11,23 @@ namespace Networkbot
 {
     class Program
     {
-        static nodestruct nstruct = new nodestruct(true);
         public static bool run = true;
         public static Logging logger = new Logging(true, true);
         public static DateTime starttime = DateTime.Now;
+
         static int port = 5000;
         static Socket mainsock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        static Dictionary<string, KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>> functiondict = new Dictionary<string, KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>>();
-        static Dictionary<string, KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>> privfunctiondict = new Dictionary<string, KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>>();
+        static List<IPAddress> AllowedSteamClientIPs = new List<IPAddress>() { IPAddress.Loopback };
 
-        [DllImport("CedTurboLib.dll")]
-        static extern void printshit(string stufftoprint);
+        static nodestruct nstruct = new nodestruct(true);
+        static Dictionary<string, KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>> functiondict = new Dictionary<string, KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>>();
+        static Dictionary<string, KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>> privfunctiondict = new Dictionary<string, KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>>();
+
+
 
 
         static void Main(string[] args)
         {
-            printshit("test");
             addfunctionstodict();
             nstruct.blacklist.Add("onymity");
             if (!Networking.socketfunctions.trybindsocket(mainsock, ref port, true, 50, IPAddress.Any))
@@ -35,11 +36,10 @@ namespace Networkbot
             logger.log("Loading variables..",Logging.Priority.Notice);
 
             try
-            { botfunctions.loadnow(nstruct, "", "","",Data.ChatType.PM); }
+            { botfunctions.loadnow(new botfunctions.BotFunctionData(nstruct)); }
             catch (Exception ex)
             { logger.logerror(ex); }
             logger.log("Trying to load playback file..", Logging.Priority.Notice);
-            // nstruct.loadplayback(); 
             try { nstruct.loadplayback(); }
             catch (Exception ex) { logger.logerror(ex); }
             long amountloops = 0;
@@ -82,13 +82,15 @@ namespace Networkbot
                                 break;
 
                             case "interactsteam":
+                                if (!AllowedSteamClientIPs.Contains(((IPEndPoint)incomingsock.RemoteEndPoint).Address))
+                                    throw new Exception("ERROR! REMOTE ENDPOINT IS NOT IN ALLOWED ENDPOINTS, SUSPECTED HACK ATTEMPT!");
                                 Data.ChatType ctype;
                                 if (!Enum.TryParse(incomingstring[3], false, out ctype))
                                 {
                                     Networking.socketfunctions.sendstring(incomingsock, "(CRITICAL) Chat type not recognized!!");
                                     logger.log("INVALID CHAT ENTRY WAS USED AND NO REPLY WAS SENT. CTYPE USED WAS: " + incomingstring[3], Logging.Priority.Critical);
                                 }
-                                Networking.socketfunctions.sendstring(incomingsock, interactsteam(incomingstring[4], incomingstring[1], incomingstring[2], ctype));
+                                Networking.socketfunctions.sendstring(incomingsock, interactsteam(new botfunctions.BotFunctionData(nstruct, incomingstring[4], incomingstring[1], incomingstring[2], ctype)));
                                 break;
 
                             default:
@@ -118,91 +120,95 @@ namespace Networkbot
         static void addfunctionstodict()
         {
             //nonprivileged functions
-            functiondict.Add("statusword", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType,string>>("Prints the childnodes this wordnode is referring to, with the weight of each childnode.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.statusword)));
-            functiondict.Add("statusreport", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Prints out a report about the status of the bot and its learning process.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.statusreport)));
-            functiondict.Add("uptime", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Prints the uptime of the computer the bot is running on.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.uptime)));
-            functiondict.Add("calc", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Calculates stuff. Doesn't work yet, need to find a safe way to do math.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.calc)));
-            functiondict.Add("slap", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("I'm a cool guy, eh, i slap people, doesn't afraid of them.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.slap)));
-            functiondict.Add("roll", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Rolls dices. e.g \"roll 5d6\" rolls 5 dices with 6 sides.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.roll)));
-            functiondict.Add("slapcount", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Gets the amount of times i slapped someone, if no name is specified i'll print it for everyone.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.getslapcount)));
-            functiondict.Add("addnewurl", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Adds new urls to my recommendation list!", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.addurl)));
-            functiondict.Add("recommendurl", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("I might know a few nice things around the net! (USE AT VIEWER DESCRETION :3)", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.geturl)));
-            functiondict.Add("8ball", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Ask a question that can be answered by yes or no, and i shall deliver!", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.eightball)));
-            functiondict.Add("whatis", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Ask me questions and i'll answer them! Use -v for verbose replies.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.AskWolframAlpha)));
-            functiondict.Add("whoami", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Shows your true nature!", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.WhoAmI)));
-            functiondict.Add("whatsmysteamid", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Enriches you with unlimited wealth and sexual desires.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.whatsmysteamID)));
+            functiondict.Add("statusword", new KeyValuePair<string, Func<botfunctions.BotFunctionData,string>>("Prints the childnodes this wordnode is referring to, with the weight of each childnode.", new Func<botfunctions.BotFunctionData, string>(botfunctions.statusword)));
+            functiondict.Add("statusreport", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Prints out a report about the status of the bot and its learning process.", new Func<botfunctions.BotFunctionData, string>(botfunctions.statusreport)));
+            functiondict.Add("uptime", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Prints the uptime of the computer the bot is running on.", new Func<botfunctions.BotFunctionData, string>(botfunctions.uptime)));
+            functiondict.Add("calc", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Calculates stuff. Doesn't work yet, need to find a safe way to do math.", new Func<botfunctions.BotFunctionData, string>(botfunctions.calc)));
+            functiondict.Add("slap", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("I'm a cool guy, eh, i slap people, doesn't afraid of them.", new Func<botfunctions.BotFunctionData, string>(botfunctions.slap)));
+            functiondict.Add("roll", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Rolls dices. e.g \"roll 5d6\" rolls 5 dices with 6 sides.", new Func<botfunctions.BotFunctionData, string>(botfunctions.roll)));
+            functiondict.Add("slapcount", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Gets the amount of times i slapped someone, if no name is specified i'll print it for everyone.", new Func<botfunctions.BotFunctionData, string>(botfunctions.getslapcount)));
+            functiondict.Add("addnewurl", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Adds new urls to my recommendation list!", new Func<botfunctions.BotFunctionData, string>(botfunctions.addurl)));
+            functiondict.Add("recommendurl", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("I might know a few nice things around the net! (USE AT VIEWER DESCRETION :3)", new Func<botfunctions.BotFunctionData, string>(botfunctions.geturl)));
+            functiondict.Add("8ball", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Ask a question that can be answered by yes or no, and i shall deliver!", new Func<botfunctions.BotFunctionData, string>(botfunctions.eightball)));
+            functiondict.Add("whatis", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Ask me questions and i'll answer them! Use -v for verbose replies.", new Func<botfunctions.BotFunctionData, string>(botfunctions.AskWolframAlpha)));
+            functiondict.Add("whoami", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Shows your true nature!", new Func<botfunctions.BotFunctionData, string>(botfunctions.WhoAmI)));
+            functiondict.Add("whatsmysteamid", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Enriches you with unlimited wealth and sexual desires, obviously.", new Func<botfunctions.BotFunctionData, string>(botfunctions.whatsmysteamID)));
+            functiondict.Add("getquote", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Gets a quote on your car insurance, obviously.", new Func<botfunctions.BotFunctionData, string>(botfunctions.GetQuote)));
 
             //privileged functions
-            privfunctiondict.Add("removeconjunction", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Removes a certain word conjunction. usage: removeconjunction someword someotherword", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.removeconjunction)));
-            privfunctiondict.Add("purgenow", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Runs the bad node purge algorhythm now. Don't run this too much, it'll dumb the bot down, though it might help now and then.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.purgenow)));
-            privfunctiondict.Add("setratelimit", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Set a rate limit.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.setratelimit)));
-            privfunctiondict.Add("toggleratelimit", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Toggles the ratelimit.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.toggleratelimit)));
-            privfunctiondict.Add("toggledebug", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Toggles debug.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.toggledebug)));
-            privfunctiondict.Add("loadmemfile", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Loads a memory file. Usage: loadmemfile _filename relative to executable_", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.loadmemfile)));
-            privfunctiondict.Add("savexmlnow", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Saves the settings to XML settings right now. Overrides normal save rate.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.savenow)));
-            privfunctiondict.Add("loadxmlnow", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Loads XML settings right now.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.loadnow)));
-            privfunctiondict.Add("changexml", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Changes XML persistent settings. Syntax: changexml add|del|delchild|change %dictitem% %itemtoadd|del|change% %change|addargument% .", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.changexml)));
-            privfunctiondict.Add("printxml", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Prints the contents of an xml dictionary, usage: printxml _dictionaryname_", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.printxml)));
-            privfunctiondict.Add("setmaxresponselength", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Sets the max response length of the bot (5 words may be added), with a minimum of 2.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.SetMaxSentenceLength)));
-            privfunctiondict.Add("shutdowngracefully", new KeyValuePair<string, Func<nodestruct, string, string, string, Data.ChatType, string>>("Gracefully saves all data and shuts the bot down.", new Func<nodestruct, string, string, string, Data.ChatType, string>(botfunctions.ShutdownGracefully)));
+            privfunctiondict.Add("removeconjunction", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Removes a certain word conjunction. usage: removeconjunction someword someotherword", new Func<botfunctions.BotFunctionData, string>(botfunctions.removeconjunction)));
+            privfunctiondict.Add("purgenow", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Runs the bad node purge algorhythm now. Don't run this too much, it'll dumb the bot down, though it might help now and then.", new Func<botfunctions.BotFunctionData, string>(botfunctions.purgenow)));
+            privfunctiondict.Add("setratelimit", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Set a rate limit.", new Func<botfunctions.BotFunctionData, string>(botfunctions.setratelimit)));
+            privfunctiondict.Add("toggleratelimit", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Toggles the ratelimit.", new Func<botfunctions.BotFunctionData, string>(botfunctions.toggleratelimit)));
+            privfunctiondict.Add("toggledebug", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Toggles debug.", new Func<botfunctions.BotFunctionData, string>(botfunctions.toggledebug)));
+            privfunctiondict.Add("loadmemfile", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Loads a memory file. Usage: loadmemfile _filename relative to executable_", new Func<botfunctions.BotFunctionData, string>(botfunctions.loadmemfile)));
+            privfunctiondict.Add("savexmlnow", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Saves the settings to XML settings right now. Overrides normal save rate.", new Func<botfunctions.BotFunctionData, string>(botfunctions.savenow)));
+            privfunctiondict.Add("loadxmlnow", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Loads XML settings right now.", new Func<botfunctions.BotFunctionData, string>(botfunctions.loadnow)));
+            privfunctiondict.Add("changexml", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Changes XML persistent settings. Syntax: changexml add|del|delchild|change %dictitem% %itemtoadd|del|change% %change|addargument% .", new Func<botfunctions.BotFunctionData, string>(botfunctions.changexml)));
+            privfunctiondict.Add("printxml", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Prints the contents of an xml dictionary, usage: printxml _dictionaryname_", new Func<botfunctions.BotFunctionData, string>(botfunctions.printxml)));
+            privfunctiondict.Add("setmaxresponselength", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Sets the max response length of the bot (5 words may be added), with a minimum of 2.", new Func<botfunctions.BotFunctionData, string>(botfunctions.SetMaxSentenceLength)));
+            privfunctiondict.Add("shutdowngracefully", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Gracefully saves all data and shuts the bot down.", new Func<botfunctions.BotFunctionData, string>(botfunctions.ShutdownGracefully)));
+            privfunctiondict.Add("toggleonyantispam", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Toggles onymity's builtin anti spam protection (The one that prevents ony from spamming, not from being spammed).", new Func<botfunctions.BotFunctionData, string>(botfunctions.ToggleAntiOnySpam)));
 
         }
 
         //interactsteam specific variables
         static int lastsave = 0;
-        static string interactsteam(string input, string steamID, string steamName, Data.ChatType chatType)
+        static string interactsteam(botfunctions.BotFunctionData BotData)
         {
             StringBuilder responsebuilder = new StringBuilder();
-            logger.log("Got: " + input, Logging.Priority.Info);
+            logger.log("Got: " + BotData.input, Logging.Priority.Info);
             lastsave++;
             if (lastsave > 20)
             {
-                botfunctions.savenow(nstruct, "","", "", Data.ChatType.PM);
+                botfunctions.savenow(new botfunctions.BotFunctionData());
                 lastsave = 0;
             }
-            input = nstruct.stripnames(input).Trim() ;
+            BotData.input = nstruct.stripnames(BotData.input).Trim() ;
             try
             {
-                if (functiondict.ContainsKey(input.Split(' ')[0]))
+                if (functiondict.ContainsKey(BotData.input.Split(' ')[0]))
                 {
-                    responsebuilder.Append(functiondict[input.Split(' ')[0]].Value.Invoke(nstruct, input, steamID, steamName, chatType));
+                    responsebuilder.Append(functiondict[BotData.input.Split(' ')[0]].Value.Invoke(BotData));
+                    if (responsebuilder.Length > botfunctions.SpamThreshold && botfunctions.OnySpamProtection)
+                        return "(Spam prevention) Answer too long! Ask this again in a PM or ask an Admin to disable spam protection.";
                 }
-                else if (Data.IsAdmin(steamID) && privfunctiondict.ContainsKey(input.Split(' ')[0]))
+                else if (Data.IsAdmin(BotData.steamID) && privfunctiondict.ContainsKey(BotData.input.Split(' ')[0]))
                 {
-                    responsebuilder.Append(privfunctiondict[input.Split(' ')[0]].Value.Invoke(nstruct, input, steamID, steamName, chatType));
+                    responsebuilder.Append(privfunctiondict[BotData.input.Split(' ')[0]].Value.Invoke(BotData));
                 }
                 else
-                    if (input.Split(' ').Length > 0)
-                        switch (input.Split(' ')[0])
+                    if (BotData.input.Split(' ').Length > 0)
+                        switch (BotData.input.Split(' ')[0])
                         {
 
                             case "manual":
-                                if (input.Split(' ').Length == 2)
+                                if (BotData.input.Split(' ').Length == 2)
                                 {
-                                    if (Data.IsAdmin(steamID))
+                                    if (Data.IsAdmin(BotData.steamID))
                                     {
-                                        if (functiondict.ContainsKey(input.Split(' ')[1]))
-                                            try { responsebuilder.AppendFormat("Man page for {0}: {1}", input.Split(' ')[1], functiondict[input.Split(' ')[1]].Key); }
+                                        if (functiondict.ContainsKey(BotData.input.Split(' ')[1]))
+                                            try { responsebuilder.AppendFormat("Man page for {0}: {1}", BotData.input.Split(' ')[1], functiondict[BotData.input.Split(' ')[1]].Key); }
                                             catch (Exception ex) { responsebuilder.Append(ex.Message); }
                                         else
-                                            try { responsebuilder.AppendFormat("Man page for {0}: {1}", input.Split(' ')[1], privfunctiondict[input.Split(' ')[1]].Key); }
+                                            try { responsebuilder.AppendFormat("Man page for {0}: {1}", BotData.input.Split(' ')[1], privfunctiondict[BotData.input.Split(' ')[1]].Key); }
                                             catch (Exception ex) { responsebuilder.Append(ex.Message); }
                                     }
                                     else
-                                        try { responsebuilder.AppendFormat("Man page for {0}: {1}", input.Split(' ')[1], functiondict[input.Split(' ')[1]].Key); }
+                                        try { responsebuilder.AppendFormat("Man page for {0}: {1}", BotData.input.Split(' ')[1], functiondict[BotData.input.Split(' ')[1]].Key); }
                                         catch (Exception ex) { responsebuilder.Append(ex.Message); }
                                 }
                                 else
                                 {
                                     StringBuilder sbuilder = new StringBuilder(); functiondict.Keys.ToList().ForEach(s => sbuilder.Append(s + ", "));
-                                    if (Data.IsAdmin(steamID))
+                                    if (Data.IsAdmin(BotData.steamID))
                                         privfunctiondict.Keys.ToList().ForEach(s => sbuilder.Append(s + ", "));
                                     responsebuilder.AppendFormat("Please specify a command to get the manual from. Current usable commands to you: {0}", sbuilder.ToString());
                                 }
                                 break;
 
                             default:
-                                nstruct.parsestring(input);
+                                nstruct.parsestring(BotData.input);
                                 responsebuilder.Append(nstruct.makeresponse());
                                 break;
                         }

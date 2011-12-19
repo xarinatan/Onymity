@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CedLib">
-      <HintPath>..\..\CedLib\CedLib\bin\Release\CedLib.dll</HintPath>
+      <HintPath>..\Resources\C# libs\CedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
