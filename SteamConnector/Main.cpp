@@ -5,7 +5,6 @@
 #include <atlstr.h>
 
 #include <Steamworks.h>
-
 #include <SFML/Network.hpp>
 
 #undef FAILED
@@ -82,9 +81,7 @@ int main(int argc, char** argv)
 	IClientFriends *clientfriends = static_cast<IClientFriends*>(client->GetIClientFriends(user, pipe, CLIENTFRIENDS_INTERFACE_VERSION));
 	IClientUser *clientuser       = static_cast<IClientUser*>   (client->GetIClientUser(user, pipe, CLIENTUSER_INTERFACE_VERSION));
 
-	cout << "Now connected to steam and running!" << endl;
-
-	char* dest = 0;
+	cout << "Now connected to steam and awaiting callbacks!" << endl;
 
 	while(true)
 	{
@@ -96,8 +93,6 @@ int main(int argc, char** argv)
 			case ChatRoomMsg_t::k_iCallback:
 			case 810: // Chat room callback
                 {
-                    dest = new char[4096];
-
 				    ChatRoomMsg_t Info = *(ChatRoomMsg_t *)callBack.m_pubParam;
 
 				    if (Info.m_ulSteamIDUser == clientuser->GetSteamID())
@@ -107,24 +102,27 @@ int main(int argc, char** argv)
 				    string userName = clientfriends->GetFriendPersonaName(Info.m_ulSteamIDUser);
 				    EChatEntryType entry = k_EChatEntryTypeInvalid;
 
-				    clientfriends->GetChatRoomEntry(Info.m_ulSteamIDChat, Info.m_iChatID, &userID, dest, 4096, &entry);
+                    char* temp = new char[4096];
+				    clientfriends->GetChatRoomEntry(Info.m_ulSteamIDChat, Info.m_iChatID, &userID, temp, 4096, &entry);
+                    std::string message = temp;
+                    delete[] temp;
 
 				    if (entry != k_EChatEntryTypeChatMsg && entry != k_EChatEntryTypeEmote)
 						    break;
 
 				    cout << "[Group] " << userName << " said something!" << endl;
 				
-                    bool foundOny = (ci_find_substr(std::string(dest), std::string("ony")) != -1);
+                    bool foundOny = (ci_find_substr<string>(message, "ony") != -1);
 
 					if (!foundOny && entry == k_EChatEntryTypeChatMsg)
 					{
-						RunBotCommand(Info.m_ulSteamIDUser, Message_Tell, dest, userName, Chat_Group);
+						RunBotCommand(Info.m_ulSteamIDUser, Message_Tell, message, userName, Chat_Group);
 					}
                     
                     if (!foundOny)
                         break;
 				
-				    string response = RunBotCommand(Info.m_ulSteamIDUser, Message_Interact, dest, userName, Chat_Group);
+				    string response = RunBotCommand(Info.m_ulSteamIDUser, Message_Interact, message, userName, Chat_Group);
 
 				    if(response.length() == 0)
                     {
@@ -133,7 +131,7 @@ int main(int argc, char** argv)
                     }
                     else if (response.front() == '!')
                     {
-                        cout << " !" << response << "!";
+                        cout << " !" << response << "!" << endl;
                         break;
                     }
                     
@@ -153,8 +151,6 @@ int main(int argc, char** argv)
 		    case 805:
 			case FriendChatMsg_t::k_iCallback:
                 {
-                    dest = new char[4096];
-
 				    FriendChatMsg_t Info = *(FriendChatMsg_t *)callBack.m_pubParam;
 
 				    if (Info.m_ulSender == clientuser->GetSteamID())
@@ -162,16 +158,19 @@ int main(int argc, char** argv)
 
 				    EChatEntryType entry = k_EChatEntryTypeInvalid;
 
-				    clientfriends->GetFriendMessage(Info.m_ulReceiver, Info.m_iChatID, dest, 4096, &entry);
+                    char* temp = new char[4096];
+				    clientfriends->GetFriendMessage(Info.m_ulReceiver, Info.m_iChatID, temp, 4096, &entry);
+                    std::string message = temp;
+                    delete[] temp;
 
 				    if (entry != k_EChatEntryTypeChatMsg)
 					    break;
 
                     string userName = clientfriends->GetFriendPersonaName(Info.m_ulSender);
 
-				    cout << "[Friend] " << userName << " said something!";
+				    cout << "[Friend] " << userName << " said something!" << endl;
 
-				    string response = RunBotCommand(Info.m_ulSender, Message_Interact, dest, userName, Chat_Private);
+				    string response = RunBotCommand(Info.m_ulSender, Message_Interact, message, userName, Chat_Private);
 
                     if(response.length() == 0)
                     {
@@ -180,7 +179,7 @@ int main(int argc, char** argv)
                     }
                     else if (response.front() == '!')
                     {
-                        cout << " !" << response << "!";
+                        cout << " !" << response << "!" << endl;
                         break;
                     }
 
@@ -197,12 +196,6 @@ int main(int argc, char** argv)
                 }
 			}
 
-            if (dest != 0)
-            {
-			    delete[] dest;
-                dest = 0;
-            }
-
 			FreeLastCallback(pipe);
 		}
 
@@ -217,58 +210,59 @@ std::string RunBotCommand(const CSteamID& id, MessageType mType, const string& m
 	try
     {
 	    sf::TcpSocket socket;
-        sf::Socket::Status status;
 
-	    status = socket.Connect(ipAndSuch, port);
+        sf::Socket::Status status = socket.Connect(ipAndSuch, port);
         if (FAILED(status))
             return "!Failed to connect to bot!";
 
-	    CStringW test = CStringW((mType == Message_Interact ? L"interactsteam" : L"tell"));
-        test.Append(L"\n");
-	    test.Append(CA2W(id.Render()));
-	    test.Append(L"\n");
-	    test.Append(CA2W(username.c_str()));
-	    test.Append(L"\n");
-	    test.Append((cType == Chat_Private ? L"PM" : L"GROUPCHAT"));
-	    test.Append(L"\n");
-	    test.Append(CA2W(message.c_str()));
-	    char* test2 = new char[test.GetLength()*2];
+        char* utf8string = new char[2048];
+        sprintf(utf8string, "%s\n%s\n%s\n%s\n%s\n", (mType == Message_Interact ? "interactsteam" : "tell"), id.Render(), username.c_str(), (cType == Chat_Private ? "PM" : "GROUPCHAT"), message.c_str());
 
-	    _swab((char*)test.GetString(), test2, test.GetLength()*2);
+        char* utf16string = 0;
+        int utf16stringLen = 0;
+        {
+	        CStringW temp = CStringW(CA2W(utf8string));
+            utf16stringLen = temp.GetLength()*2;
+	        utf16string = new char[utf16stringLen];
 
-	    status = socket.Send(test2, test.GetLength()*2);
+	        _swab((char*)temp.GetString(), utf16string, utf16stringLen);
+        }
+
+        delete[] utf8string;
+
+	    status = socket.Send(utf16string, utf16stringLen);
+        delete[] utf16string;
+
         if (FAILED(status))
         {
-            delete[] test2;
-
             return "!Failed to send message to bot!";
         }
 
-	    char* chars = new char[2048];
+	    utf16string = new char[2048];
 	    size_t size;
 
-	    status = socket.Receive(chars, (size_t)2048, size);
+	    status = socket.Receive(utf16string, (size_t)2048, size);
         if (FAILED(status))
         {
-            delete[] test2;
-            delete[] chars;
+            delete[] utf16string;
 
             return "!Failed to receive response from bost!";
         }
 
-	    wchar_t* char2 = new wchar_t[size];
-	    _swab(chars, (char*)char2, size);
+        std::string retString;
+        {
+	        wchar_t* temp = new wchar_t[size];
+	        _swab(utf16string, (char*)temp, size);
 
-	    CStringW asdf(char2);
-	    std::string Dcolon = std::string(CW2A(asdf));
-	    Dcolon.resize(size/2);
+	        CStringW asdf(temp);
+	        retString = std::string(CW2A(asdf));
+            delete[] temp;
 
-	    delete[] chars;
-	    delete[] char2;
-	    delete[] test2;
+	        retString.resize(size/2);
+        }
 
 	    socket.Disconnect();
-	    return Dcolon;
+	    return retString;
 	}
 	catch (const std::exception& e)
 	{
