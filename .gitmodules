@@ -1,0 +1,3 @@
+[submodule "CedLib"]
+	path = CedLib
+	url = git://github.com/xarinatan/CedLib.git
