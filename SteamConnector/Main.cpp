@@ -1,12 +1,10 @@
 #define STEAMWORKS_CLIENT_INTERFACES
 
 #include <iostream>
-#include <locale>
 #include <cstringt.h>
 #include <atlstr.h>
 
 #include <Steamworks.h>
-
 #include <SFML/Network.hpp>
 
 #undef FAILED
@@ -83,9 +81,7 @@ int main(int argc, char** argv)
 	IClientFriends *clientfriends = static_cast<IClientFriends*>(client->GetIClientFriends(user, pipe, CLIENTFRIENDS_INTERFACE_VERSION));
 	IClientUser *clientuser       = static_cast<IClientUser*>   (client->GetIClientUser(user, pipe, CLIENTUSER_INTERFACE_VERSION));
 
-	cout << "Now connected to steam and running!" << endl;
-
-	char* dest = 0;
+	cout << "Now connected to steam and awaiting callbacks!" << endl;
 
 	while(true)
 	{
@@ -97,8 +93,6 @@ int main(int argc, char** argv)
 			case ChatRoomMsg_t::k_iCallback:
 			case 810: // Chat room callback
                 {
-                    dest = new char[4096];
-
 				    ChatRoomMsg_t Info = *(ChatRoomMsg_t *)callBack.m_pubParam;
 
 				    if (Info.m_ulSteamIDUser == clientuser->GetSteamID())
@@ -108,24 +102,27 @@ int main(int argc, char** argv)
 				    string userName = clientfriends->GetFriendPersonaName(Info.m_ulSteamIDUser);
 				    EChatEntryType entry = k_EChatEntryTypeInvalid;
 
-				    clientfriends->GetChatRoomEntry(Info.m_ulSteamIDChat, Info.m_iChatID, &userID, dest, 4096, &entry);
+                    char* temp = new char[4096];
+				    clientfriends->GetChatRoomEntry(Info.m_ulSteamIDChat, Info.m_iChatID, &userID, temp, 4096, &entry);
+                    std::string message = temp;
+                    delete[] temp;
 
 				    if (entry != k_EChatEntryTypeChatMsg && entry != k_EChatEntryTypeEmote)
 						    break;
 
 				    cout << "[Group] " << userName << " said something!" << endl;
 				
-                    bool foundOny = (ci_find_substr(std::string(dest), std::string("ony")) != -1);
+                    bool foundOny = (ci_find_substr<string>(message, "ony") != -1);
 
 					if (!foundOny && entry == k_EChatEntryTypeChatMsg)
 					{
-						RunBotCommand(Info.m_ulSteamIDUser, Message_Tell, dest, userName, Chat_Group);
+						RunBotCommand(Info.m_ulSteamIDUser, Message_Tell, message, userName, Chat_Group);
 					}
                     
                     if (!foundOny)
                         break;
 				
-				    string response = RunBotCommand(Info.m_ulSteamIDUser, Message_Interact, dest, userName, Chat_Group);
+				    string response = RunBotCommand(Info.m_ulSteamIDUser, Message_Interact, message, userName, Chat_Group);
 
 				    if(response.length() == 0)
                     {
@@ -154,8 +151,6 @@ int main(int argc, char** argv)
 		    case 805:
 			case FriendChatMsg_t::k_iCallback:
                 {
-                    dest = new char[4096];
-
 				    FriendChatMsg_t Info = *(FriendChatMsg_t *)callBack.m_pubParam;
 
 				    if (Info.m_ulSender == clientuser->GetSteamID())
@@ -163,7 +158,10 @@ int main(int argc, char** argv)
 
 				    EChatEntryType entry = k_EChatEntryTypeInvalid;
 
-				    clientfriends->GetFriendMessage(Info.m_ulReceiver, Info.m_iChatID, dest, 4096, &entry);
+                    char* temp = new char[4096];
+				    clientfriends->GetFriendMessage(Info.m_ulReceiver, Info.m_iChatID, temp, 4096, &entry);
+                    std::string message = temp;
+                    delete[] temp;
 
 				    if (entry != k_EChatEntryTypeChatMsg)
 					    break;
@@ -172,7 +170,7 @@ int main(int argc, char** argv)
 
 				    cout << "[Friend] " << userName << " said something!" << endl;
 
-				    string response = RunBotCommand(Info.m_ulSender, Message_Interact, dest, userName, Chat_Private);
+				    string response = RunBotCommand(Info.m_ulSender, Message_Interact, message, userName, Chat_Private);
 
                     if(response.length() == 0)
                     {
@@ -197,12 +195,6 @@ int main(int argc, char** argv)
 				    break;
                 }
 			}
-
-            if (dest != 0)
-            {
-			    delete[] dest;
-                dest = 0;
-            }
 
 			FreeLastCallback(pipe);
 		}
