@@ -47,8 +47,8 @@
     <IntDir>$(ProjectDir)$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)\Deps\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Deps\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Resources\Deps\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Resources\Deps\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
