@@ -1,11 +1,12 @@
-
-/Resources
-/Resources.zip
+Resources/
+Resources.zip
 *.suo
 *.com
 *.class
 *.dll
 *.exe
+*.ilk
+*.pdb
 *.o
 *.so
 *.sdf

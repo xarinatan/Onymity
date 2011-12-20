@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CedLib">
-      <HintPath>..\CedLib\CedLib\bin\Release\CedLib.dll</HintPath>
+      <HintPath>$(SolutionDir)\CedLib\CedLib\bin\Release\CedLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
