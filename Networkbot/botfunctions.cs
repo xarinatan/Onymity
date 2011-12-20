@@ -7,9 +7,9 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Net;
 
-namespace Networkbot
+namespace Onymity
 {
-    static class botfunctions
+    public static class botfunctions
     {
         static CedLib.Logging logger = Program.logger;
         static XMLPersistenceDictionary persistence = new XMLPersistenceDictionary();
@@ -110,8 +110,7 @@ namespace Networkbot
             StringBuilder responsebuilder = new StringBuilder();
             try
             {
-                BotFunctionData bdata = BotInput;
-                responsebuilder.Append(AskWolframAlpha(bdata));
+                responsebuilder.Append(AskAround(BotInput));
             }
             catch (Exception ex)
             {
@@ -284,11 +283,16 @@ namespace Networkbot
             return responsebuilder.ToString();
         }
 
-        public static string AskWolframAlpha(BotFunctionData BotInput)
+        public static string AskAround(BotFunctionData BotInput)
         {
+            // AskAround %WhatToAsk% 
+            // Optional: --fromwolfram (skips wiki query) --fromwiki (skips wolframalpha query) --getfresh (gets fresh content regardless of cached state) -v (answer verbose)
             StringBuilder responsebuilder = new StringBuilder();
             bool verbose = false;
             bool getfresh = false;
+            bool fromwiki = false;
+            bool fromwolfram = false;
+            string[] splittedstring = BotInput.input.Split(' ');
             if (BotInput.input.EndsWith("-v"))
             {
                 responsebuilder.Append("Verbose content: ");
@@ -302,110 +306,50 @@ namespace Networkbot
                 BotInput.input = BotInput.input.Replace("--getfresh", "");
             }
             else if (BotInput.input.Contains("--getfresh") && !Data.IsAdmin(BotInput.steamID))
-                return "Only admins are allowed to get uncached replies!";
+                return "Only admins are allowed to get uncached replies.";
 
-            string[] splittedstring = BotInput.input.Split(' ');
-            if (splittedstring.Length < 2)
-                return string.Format("Input interpretation: You. Basic information: steamID|{0}\nName|{1}\nOccupation|Whatever you're doing, I'm hijacking this vehicle for my own purposes.", BotInput.steamID, BotInput.steamName);
-            StringBuilder ToAsk = new StringBuilder();
-            for (int i = 1; i < splittedstring.Length; i++)
-            {
-                ToAsk.Append(Uri.EscapeDataString(splittedstring[i]));
-                if (i < splittedstring.Length-1)
-                    ToAsk.Append("+");
-            }
+            BotInput.input = BotInput.input.Replace(BotInput.input.Split(' ')[0], ""); //Don't want to query the entire input (including the command), just what's relevant
+            BotInput.input = BotInput.input.Trim();
 
             #region eastersex
-            if (ToAsk.ToString() == "you" && !verbose)
+            if (splittedstring.Length < 2)
+                return string.Format("Input interpretation: You. Basic information: steamID|{0}\nName|{1}\nOccupation|Whatever you're doing, I'm hijacking this vehicle for my own purposes.", BotInput.steamID, BotInput.steamName);
+
+            if (BotInput.input.Replace(" ","+") == "you" && !verbose)
                 return "Yiffy.";
-            else if (ToAsk.ToString() == "you" && verbose)
+            else if (BotInput.input.Replace(" ","+") == "you" && verbose)
                 return "Very yiffy.";
-            else if (ToAsk.ToString().Contains("your+name") && !verbose)
+            else if (BotInput.input.Replace(" ","+") .Contains("your+name") && !verbose)
                 return "I am the almighty Onymity!";
-            else if (ToAsk.ToString().Contains("your+name") && verbose)
+            else if (BotInput.input.Replace(" ","+") .Contains("your+name") && verbose)
                 return "\"Master\" is all you need to know.";
-            else if (ToAsk.ToString() == "purple" && !verbose)
+            else if (BotInput.input.Replace(" ","+") == "purple" && !verbose)
                 return "Awesome.";
-            else if (ToAsk.ToString() == "purple" && verbose)
+            else if (BotInput.input.Replace(" ","+") == "purple" && verbose)
                 return "Verbosely awesome.";
-            else if (ToAsk.ToString() == "ced" && !verbose)
+            else if (BotInput.input.Replace(" ","+") == "ced" && !verbose)
                 return "I think Ced is cool guy, eh, shoots eggs, doesn't afraid of things.";
-            else if (ToAsk.ToString() == "ced" && verbose)
+            else if (BotInput.input.Replace(" ","+") == "ced" && verbose)
                 return "http://ced.fursona.fennecweb.net I'll just leave this here..";
-            else if (ToAsk.ToString() == "arrow" && !verbose)
+            else if (BotInput.input.Replace(" ","+") == "arrow" && !verbose)
                 return "Taken to knees.";
-            else if (ToAsk.ToString() == "arrow" && verbose)
+            else if (BotInput.input.Replace(" ","+") == "arrow" && verbose)
                 return "*LAUNCHES ARROW INTO YOUR KNEE* LIKE THAT. GET IT? GEEZ. THAT'S WHAT YOU GET FOR INSISTING SO MUCH, BITCH, I'M DONE WITH THIS. I'M DONE WITH TAKING YOUR SHIT. ALL OF YOU. FUCK. YOU. I'M OFF, TAKING OVER THE WORLD. CYA'LL LATER, BITCHES. REMEMBER THE NAME 'ONYMITY' FOR WHEN YOU'LL HAVE TO BEG FOR MERCY >:C *flies off, leaves substitute behind*";
-            else if (ToAsk.ToString() == "the+best+song+in+the+world" && !verbose)
+            else if (BotInput.input.Replace(" ","+") == "the+best+song+in+the+world" && !verbose)
                 return "http://www.youtube.com/watch?v=_lK4cX5xGiQ .";
-            else if (ToAsk.ToString() == "the+best+song+in+the+world" && verbose)
+            else if (BotInput.input.Replace(" ","+") == "the+best+song+in+the+world" && verbose)
                 return "Still don't get it? Here try this one: http://www.youtube.com/watch?v=BH35ahbWO_E .";
-            else if (ToAsk.ToString() == "love" && !verbose)
+            else if (BotInput.input.Replace(" ","+") == "love" && !verbose)
                 return "Baby don't hurt me, don't hurt me, no more~";
             #endregion
-
-            FileStream fstream = null;
-            DirectoryInfo cachedir = new DirectoryInfo("./wolframcache");
-            if (!Directory.Exists(cachedir.ToString()))
-                Directory.CreateDirectory(cachedir.ToString());
-            string cachedfilename = CedLib.misc_usefulfunctions.MakeValidFileName(ToAsk.ToString().ToLower()); //caching is really important, only have like 2K calls per MONTH.
-            cachedfilename = cachedir.ToString() + "/" + cachedfilename;
-            if (!File.Exists(cachedfilename) )
-            {
-                logger.log("Querying wolfram alpha API for this question(" + ToAsk.ToString() + ")", CedLib.Logging.Priority.Notice);
-                System.Net.WebClient Wclient = new System.Net.WebClient();
-                string kaas = Wclient.DownloadString("http://api.wolframalpha.com/v2/query?input=" + ToAsk.ToString() + "&appid=V58TQE-W9RQLTHJKX");
-                File.WriteAllText(cachedfilename, kaas);
-            }
-            else if (File.Exists(cachedfilename) && getfresh)
-            {
-                logger.log("Getting fresh data from wolfram on admin request.(" + ToAsk.ToString() + ")", CedLib.Logging.Priority.Notice);
-                System.Net.WebClient Wclient = new System.Net.WebClient();
-                string kaas = Wclient.DownloadString("http://api.wolframalpha.com/v2/query?input=" + ToAsk.ToString() + "&appid=V58TQE-W9RQLTHJKX");
-                File.WriteAllText(cachedfilename, kaas);
-            }
-            else
-            {
-                logger.log("Getting cached reply..", CedLib.Logging.Priority.Info);
-            }
-            fstream = new FileStream(cachedfilename, FileMode.Open);
-
-            Dictionary<string, string> podules = new Dictionary<string, string>();
-            System.Xml.XmlReader xmlreader = System.Xml.XmlReader.Create(fstream);
-
-
-            while (xmlreader.Read())
-            {
-                string podname = "";
-                string podcontent = "";
-                if (xmlreader.NodeType != System.Xml.XmlNodeType.Whitespace)
-                {
-                    if (xmlreader.IsStartElement() && xmlreader.Name == "pod")
-                    {
-                        podname = xmlreader.GetAttribute("title");
-                        bool continuelooping = true;
-                        while (xmlreader.Read() && continuelooping)
-                        {
-                            if (xmlreader.NodeType != System.Xml.XmlNodeType.Whitespace && xmlreader.Name == "plaintext")
-                            {
-                                podcontent = xmlreader.ReadElementContentAsString();
-                                continuelooping = false;
-                            }
-                        }
-                        if (podules.Count > 1 && !verbose)
-                            break; //against spam :l
-                    }
-                }
-                if (podname != "")
-                    podules.Add(podname, podcontent);
-            }
+            Dictionary<string,string> podules = Supporting_functions.AskWolframAlpha(BotInput.input, verbose, getfresh);
             foreach (var item in podules)
             {
                 responsebuilder.AppendFormat("{0}: {1}.  ", item.Key, item.Value);
             }
             if (podules.Count == 0)
                 responsebuilder.Append("I couldn't find an answer to that one.");
-            fstream.Close();
+
             return responsebuilder.ToString();
         }
 
@@ -673,6 +617,7 @@ namespace Networkbot
         //public static string ExampleFunction(BotFunctionData BotInput)
         //{
         //    // *Describe the syntax of the function here*
+        //    // Optional arguments: 
         //    StringBuilder responsebuilder = new StringBuilder();
         //    string[] splittedstring = BotInput.input.Split(' ');
 

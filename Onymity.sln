@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bottest 2011", "Bottest 2011\Bottest 2011.csproj", "{939985EE-1A31-4797-A4EA-66C4F9BEA415}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networkbot", "Networkbot\Networkbot.csproj", "{79645EF6-A498-4C7E-B785-BB89787E16D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onymity", "Networkbot\Onymity.csproj", "{79645EF6-A498-4C7E-B785-BB89787E16D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkbotClienttest", "NetworkbotClienttest\NetworkbotClienttest.csproj", "{5453A77F-6C88-422A-BFE3-0D652D9B84F0}"
 EndProject

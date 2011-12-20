@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using CedLib.Persistence.XMLPersistenceDictionary;
 
-namespace Networkbot
+namespace Onymity
 {
     public static class Data
     {

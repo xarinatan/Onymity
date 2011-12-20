@@ -1,3 +1,20 @@
 
 /Resources
 /Resources.zip
+*.suo
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.sdf
+*.opensdf
+*.vcxproj.user
+*~
+Debug/
+Release/
+ipch/
+bin/
+lib/
+obj/

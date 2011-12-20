@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CedLib;
+using CedLib.Networking;
 using System.Net.Sockets;
 using System.Net;
 using System.Runtime.InteropServices;
 
-namespace Networkbot
+namespace Onymity
 {
     class Program
     {
@@ -30,7 +31,7 @@ namespace Networkbot
         {
             addfunctionstodict();
             nstruct.blacklist.Add("onymity");
-            if (!Networking.socketfunctions.trybindsocket(mainsock, ref port, true, 50, IPAddress.Any))
+            if (!socketfunctions.trybindsocket(mainsock, ref port, true, 50, IPAddress.Any))
             { logger.log("FAILED TO BIND TO ANY PORT. EXITTING", Logging.Priority.Critical); return; }
             logger.log("Initialized main function", Logging.Priority.Info);
             logger.log("Loading variables..",Logging.Priority.Notice);
@@ -51,9 +52,9 @@ namespace Networkbot
                 System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
                 swatch.Start();
                 logger.log("Got connection from: " + incomingsock.RemoteEndPoint, Logging.Priority.Notice);
-                if (Networking.socketfunctions.waitfordata(incomingsock, 10000, true))
+                if (socketfunctions.waitfordata(incomingsock, 10000, true))
                 {
-                    string[] incomingstring = Networking.socketfunctions.receivestring(incomingsock, true).Replace("\r\n", "\n").Split('\n');
+                    string[] incomingstring = socketfunctions.receivestring(incomingsock, true).Replace("\r\n", "\n").Split('\n');
                     try
                     {
                         switch (incomingstring[0])
@@ -64,13 +65,13 @@ namespace Networkbot
                                 break;
 
                             case "talk":
-                                Networking.socketfunctions.sendstring(incomingsock, nstruct.makeresponse());
+                                socketfunctions.sendstring(incomingsock, nstruct.makeresponse());
                                 break;
 
                             case "talkifcalled":
                                 nstruct.parsestring(incomingstring[1]);
                                 if (incomingstring[1].Contains(nstruct.myname))
-                                    Networking.socketfunctions.sendstring(incomingsock, nstruct.makeresponse());
+                                    socketfunctions.sendstring(incomingsock, nstruct.makeresponse());
                                 break;
 
                             case "talkandlearn":
@@ -78,7 +79,7 @@ namespace Networkbot
                                 nstruct.parsestring(incomingstring[1]);
                                 string response = nstruct.makeresponse();
                                 logger.log("Reply: " + response, Logging.Priority.Info);
-                                Networking.socketfunctions.sendstring(incomingsock, response);
+                                socketfunctions.sendstring(incomingsock, response);
                                 break;
 
                             case "interactsteam":
@@ -87,14 +88,14 @@ namespace Networkbot
                                 Data.ChatType ctype;
                                 if (!Enum.TryParse(incomingstring[3], false, out ctype))
                                 {
-                                    Networking.socketfunctions.sendstring(incomingsock, "(CRITICAL) Chat type not recognized!!");
+                                    socketfunctions.sendstring(incomingsock, "(CRITICAL) Chat type not recognized!!");
                                     logger.log("INVALID CHAT ENTRY WAS USED AND NO REPLY WAS SENT. CTYPE USED WAS: " + incomingstring[3], Logging.Priority.Critical);
                                 }
-                                Networking.socketfunctions.sendstring(incomingsock, interactsteam(new botfunctions.BotFunctionData(nstruct, incomingstring[4], incomingstring[1], incomingstring[2], ctype)));
+                                socketfunctions.sendstring(incomingsock, interactsteam(new botfunctions.BotFunctionData(nstruct, incomingstring[4], incomingstring[1], incomingstring[2], ctype)));
                                 break;
 
                             default:
-                                Networking.socketfunctions.sendstring(incomingsock, "Command not recognized.");
+                                socketfunctions.sendstring(incomingsock, "Command not recognized.");
                                 break;
                         }
                     }
@@ -130,7 +131,7 @@ namespace Networkbot
             functiondict.Add("addnewurl", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Adds new urls to my recommendation list!", new Func<botfunctions.BotFunctionData, string>(botfunctions.addurl)));
             functiondict.Add("recommendurl", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("I might know a few nice things around the net! (USE AT VIEWER DESCRETION :3)", new Func<botfunctions.BotFunctionData, string>(botfunctions.geturl)));
             functiondict.Add("8ball", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Ask a question that can be answered by yes or no, and i shall deliver!", new Func<botfunctions.BotFunctionData, string>(botfunctions.eightball)));
-            functiondict.Add("whatis", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Ask me questions and i'll answer them! Use -v for verbose replies.", new Func<botfunctions.BotFunctionData, string>(botfunctions.AskWolframAlpha)));
+            functiondict.Add("whatis", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Ask me questions and i'll answer them! Use -v for verbose replies.", new Func<botfunctions.BotFunctionData, string>(botfunctions.AskAround)));
             functiondict.Add("whoami", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Shows your true nature!", new Func<botfunctions.BotFunctionData, string>(botfunctions.WhoAmI)));
             functiondict.Add("whatsmysteamid", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Enriches you with unlimited wealth and sexual desires, obviously.", new Func<botfunctions.BotFunctionData, string>(botfunctions.whatsmysteamID)));
             functiondict.Add("getquote", new KeyValuePair<string, Func<botfunctions.BotFunctionData, string>>("Gets a quote on your car insurance, obviously.", new Func<botfunctions.BotFunctionData, string>(botfunctions.GetQuote)));
