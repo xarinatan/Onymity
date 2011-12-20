@@ -7,11 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onymity", "Networkbot\Onymi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkbotClienttest", "NetworkbotClienttest\NetworkbotClienttest.csproj", "{5453A77F-6C88-422A-BFE3-0D652D9B84F0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BotThingy", "SteamConnector\BotThingy\BotThingy.vcxproj", "{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnyTwitter", "OnyTwitter\OnyTwitter.csproj", "{ED85F455-DB16-4D72-92A6-E101AB97AB18}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Onymity Cpp test", "Onymity Cpp test\Onymity Cpp test.vcxproj", "{235F9604-E994-496C-BC7C-D7C65F9F001A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SteamConnector", "SteamConnector\SteamConnector.vcxproj", "{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,16 +51,6 @@ Global
 		{5453A77F-6C88-422A-BFE3-0D652D9B84F0}.Release|Win32.ActiveCfg = Release|x86
 		{5453A77F-6C88-422A-BFE3-0D652D9B84F0}.Release|x86.ActiveCfg = Release|x86
 		{5453A77F-6C88-422A-BFE3-0D652D9B84F0}.Release|x86.Build.0 = Release|x86
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Win32.Build.0 = Debug|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|x86.ActiveCfg = Debug|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Win32.ActiveCfg = Release|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Win32.Build.0 = Release|Win32
-		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|x86.ActiveCfg = Release|Win32
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Debug|Win32.ActiveCfg = Debug|x86
@@ -73,16 +61,16 @@ Global
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Release|Win32.ActiveCfg = Release|x86
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Release|x86.ActiveCfg = Release|x86
 		{ED85F455-DB16-4D72-92A6-E101AB97AB18}.Release|x86.Build.0 = Release|x86
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Debug|Win32.Build.0 = Debug|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Debug|x86.ActiveCfg = Debug|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Release|Win32.ActiveCfg = Release|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Release|Win32.Build.0 = Release|Win32
-		{235F9604-E994-496C-BC7C-D7C65F9F001A}.Release|x86.ActiveCfg = Release|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|Win32.Build.0 = Debug|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Win32.ActiveCfg = Release|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|Win32.Build.0 = Release|Win32
+		{EA810D2B-7ECF-4D31-AC2C-687D31B0EF5A}.Release|x86.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
