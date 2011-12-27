@@ -216,7 +216,7 @@ std::string RunBotCommand(const CSteamID& id, MessageType mType, const string& m
             return "!Failed to connect to bot!";
 
         char* utf8string = new char[2048];
-        sprintf(utf8string, "%s\n%s\n%s\n%s\n%s\n", (mType == Message_Interact ? "interactsteam" : "tell"), id.Render(), username.c_str(), (cType == Chat_Private ? "PM" : "GROUPCHAT"), message.c_str());
+        sprintf(utf8string, "%s\n%s\n%s\n%s\n%s\n", (mType == Message_Interact ? "interactsteam" : "tell"),  username.c_str(), id.Render(), (cType == Chat_Private ? "PM" : "GROUPCHAT"), message.c_str());
 
         char* utf16string = 0;
         int utf16stringLen = 0;

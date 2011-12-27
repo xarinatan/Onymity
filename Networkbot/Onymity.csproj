@@ -65,7 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AIclasses.cs" />
     <Compile Include="botfunctions.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Games\Economy.cs" />
@@ -96,7 +95,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OnyLib\OnyLib.csproj">
+      <Project>{6C11CAB2-A298-4629-970B-5BC5C9E8CC34}</Project>
+      <Name>OnyLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
