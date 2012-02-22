@@ -43,6 +43,7 @@ namespace OnySteamInteraction
 
         static string InteractSteam(SteamStuff.BotFunctionData BotData)
         {
+            Botstuff.OnyVariables.nstruct.parsestring(BotData.input);
             string[] splittedinput = BotData.input.Split(' ');
             StringBuilder sbuilder = new StringBuilder();
             for (int i = 0; i < splittedinput.Length; i++)
@@ -62,11 +63,11 @@ namespace OnySteamInteraction
             }
             else if (Botstuff.OnyVariables.SharedUnprivelegedFunctionDict.ContainsKey(commandword))
             {
-                Botstuff.OnyVariables.SharedUnprivelegedFunctionDict[commandword].Value(new OnyLib.SpecialClasses.BotFunctionData(BotData.nstruct, BotData.input, BotData.steamName));
+                return Botstuff.OnyVariables.SharedUnprivelegedFunctionDict[commandword].Value(new OnyLib.SpecialClasses.BotFunctionData(BotData.nstruct, BotData.input, BotData.steamName));
             }
             else if(SteamStuff.IsAdmin(BotData.steamID) && Botstuff.OnyVariables.SharedPrivelegedFunctionDict.ContainsKey(commandword))
             {
-                Botstuff.OnyVariables.SharedPrivelegedFunctionDict[commandword].Value(new OnyLib.SpecialClasses.BotFunctionData(BotData.nstruct, BotData.input, BotData.steamName));
+                return Botstuff.OnyVariables.SharedPrivelegedFunctionDict[commandword].Value(new OnyLib.SpecialClasses.BotFunctionData(BotData.nstruct, BotData.input, BotData.steamName));
             }
             else if (commandword == "manual")
             {

@@ -3,11 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using CedLib.Persistence.XMLPersistenceDictionary;
 
 namespace OnyLib
 {
     namespace AI
     {
+        #region Dictionary-based sentence AI
+        public class DictionaryConstruct
+        {
+            #region vars
+            XMLPersistenceDictionary AllNodes = new XMLPersistenceDictionary("AIDictionary.xml", false);
+
+
+            #endregion
+
+
+            public DictionaryConstruct(bool prelearn)
+            {
+                
+            }
+        }
+
+
+        #endregion
+
+
+        #region node-based word AI
         public class nodestruct
         {
             #region vars
@@ -351,12 +373,12 @@ namespace OnyLib
                                     //(But it isn't part of the current node's childnode dictionary)
                                     if (translatenodes.ContainsKey(splittedstring[i + 1]))
                                     {
-                                        translatenodes[splittedstring[i]].childnodes.Add(translatenodes[splittedstring[i + 1]], 0); //add the node from the translatenodes to the childnode of the current wordnode.
+                                        translatenodes[splittedstring[i]].childnodes.Add(translatenodes[splittedstring[i + 1]], 5); //add the node from the translatenodes to the childnode of the current wordnode.
                                     }
                                 }
                                 //if the current wordnode's childnodelist DOES contain the next word in the sentence
                                 else
-                                    translatenodes[splittedstring[i]].childnodes[translatenodes[splittedstring[i + 1]]]++; //Up the current wordnode's next wordnode's value by one.
+                                    translatenodes[splittedstring[i]].childnodes[translatenodes[splittedstring[i + 1]]]+= 5; //Up the current wordnode's next wordnode's value by one.
                             }
                         }
                         else
@@ -369,45 +391,26 @@ namespace OnyLib
                 swatch.Start();
                 int purgednodes = 0;
                 int orphanednodes = 0;
+                //Make a list that is the reverse of translatenodes
                 Dictionary<node, List<node>> nodereferencedby = new Dictionary<node, List<node>>();
-                translatenodes.Values.ToList().ForEach(n => nodereferencedby.Add(n, new List<node>()));
+
+                translatenodes.Values.ToList().ForEach //for each word node
+                    (n => nodereferencedby.Add(n, new List<node>())); //add 
                 foreach (KeyValuePair<string, node> transnode in translatenodes)
                 {
                     if (transnode.Value.childnodes.Count > 0)
                     {
                         int avg = (int)transnode.Value.childnodes.Values.Average();
-                        foreach (var childnode in transnode.Value.childnodes)
+                        for (int i = 0; i < transnode.Value.childnodes.Count; i++ )
                         {
-                            if (childnode.Value < (avg / 5))
+                            var childnode = transnode.Value.childnodes.ToList()[i];
+                            if (childnode.Value < 1)
                             {
                                 transnode.Value.childnodes.Remove(childnode.Key);
                                 orphanednodes++;
                                 break;
                             }
-                            else if (childnode.Value < 1)
-                            {
-                                transnode.Value.childnodes.Remove(childnode.Key);
-                                orphanednodes++;
-                                break;
-                            }
-                            else if (childnode.Value > avg * 4)
-                            {
-                                transnode.Value.childnodes[childnode.Key] = avg;
-                                Console.Write("!");
-                                break;
-                            }
-                            else if (childnode.Value > (avg + avg / 4) && avg > 10)
-                            {
-                                transnode.Value.childnodes[childnode.Key] -= (avg / 10);
-                                Console.Write("^");
-                                break;
-                            }
-                            //else
-                            //{
-                            //    transnode.Value.childnodes[childnode.Key]--;
-                            //    Console.Write(".");
-                            //    break;
-                            //}
+                            transnode.Value.childnodes[transnode.Value.childnodes.Keys.ToList()[i]]--;
                         }
                     }
                 }
@@ -459,5 +462,6 @@ namespace OnyLib
             public string text = "";
             public Dictionary<node, int> childnodes = new Dictionary<node, int>();
         }
+        #endregion
     }
 }

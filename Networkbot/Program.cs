@@ -56,8 +56,11 @@ namespace Onymity
                 mainsock.BeginAccept(new AsyncCallback(acceptIncomingConnection), mainsock);
                 Donify.WaitOne();
             }
+            nstruct.saveplayback();
+            bstuff.OnyVariables.persistence.save();
             Console.WriteLine("Going down!");
             logger.log("Shutting down bot.", Logging.Priority.Notice);
+            logger.log("Uptime: " + (DateTime.Now - bstuff.OnyVariables.starttime).ToString(), Logging.Priority.Info);
             Environment.Exit(0);
         }
 
@@ -72,7 +75,7 @@ namespace Onymity
                     break;
 
                 case "tell":
-                    learnstring = Args.msg.ExtraneousLines[0];
+                    learnstring = Args.msg.ExtraneousLines[2]; //is a steam learning call!
                     nstruct.parsestring(learnstring);
                     break;
 

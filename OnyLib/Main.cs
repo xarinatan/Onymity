@@ -99,9 +99,9 @@ namespace OnyLib
         {
             public RuntimeVariables()
             {
-                persistence = new XMLPersistenceDictionary(logger, "funcpersistence.xml",false);
+                persistence = new XMLPersistenceDictionary(logger, "funcpersistence.xml", false);
             }
-            public Logging logger = new Logging(true,false);
+            public Logging logger = new Logging(true, true);
             public XMLPersistenceDictionary persistence;
             public DateTime lastused = DateTime.Now;
 
