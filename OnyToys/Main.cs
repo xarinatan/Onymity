@@ -33,6 +33,8 @@ namespace OnyToys
     public class Toys
     {
         OnyLib.BotStuff BotStuff;
+        DateTime LastUpdate;
+        int e621Posts;
         public XMLPersistenceDictionary persistence;
         public string QuotesFile = "quotes.txt";
         public List<string> Quotes = new List<string>();
@@ -187,5 +189,56 @@ namespace OnyToys
             return responsebuilder.ToString();
         }
 
+        void updateporn()
+        {
+            if ((DateTime.Now - LastUpdate).Minutes < 30)
+                return;
+
+            System.Net.WebClient client = new System.Net.WebClient();
+            string page = client.DownloadString("http://e621.net");
+
+            System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex(@"Serving ([0-9],]+) posts");
+            var match = image.Match(page);
+
+            if (match.Success)
+            {
+                e621Posts = int.Parse(match.Groups[0].Value.Replace(",",""));
+            }
+            else
+                logger.log("Couldn't read porncount :(", CedLib.Logging.Priority.Error);
+
+            LastUpdate = DateTime.Now;
+        }
+
+        public string recommendporn(BotFunctionData BotInput)
+        {
+            updateporn();
+            StringBuilder responsebuilder = new StringBuilder();
+            responsebuilder.Append("People apparently like: ");
+
+            if (e621Posts <= 0)
+                responsebuilder.Append("Nothing? That's strange...");
+            else
+            {
+                Random postNumber = new Random();
+                System.Net.WebClient client = new System.Net.WebClient();
+                int post = postNumber.Next(1,e621Posts);
+                string page = client.DownloadString("http://e621.net/post/show/" + post.ToString());
+
+                System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex("Size:.*href=\"([^\"]+)");
+                var match = image.Match(page);
+
+                string imageURL = "Wrong somehow :|";
+                if (match.Success)
+                    imageURL = match.Groups[0].Value;
+                else
+                    logger.log("Unable to find image in post " + post.ToString(), CedLib.Logging.Priority.Error);
+
+                responsebuilder.Append(imageURL);
+                responsebuilder.Append(" [NSFW]");
+            }
+
+            return responsebuilder.ToString();
+        }
     }
 }
