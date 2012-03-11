@@ -197,7 +197,7 @@ namespace OnyToys
             System.Net.WebClient client = new System.Net.WebClient();
             string page = client.DownloadString("http://e621.net");
 
-            System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex(@"Serving ([0-9],+) posts");
+            System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex(@"Serving ([0-9,]+) posts");
             var match = image.Match(page);
 
             if (match.Success)
