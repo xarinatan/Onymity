@@ -33,8 +33,8 @@ namespace OnyToys
     public class Toys
     {
         OnyLib.BotStuff BotStuff;
-        DateTime LastUpdate;
-        int e621Posts;
+        DateTime LastUpdate = DateTime.Now.AddDays(-1);
+        int e621Posts = 0;
         public XMLPersistenceDictionary persistence;
         public string QuotesFile = "quotes.txt";
         public List<string> Quotes = new List<string>();
@@ -191,18 +191,18 @@ namespace OnyToys
 
         void updateporn()
         {
-            if ((DateTime.Now - LastUpdate).Minutes < 30)
+            if ((DateTime.Now - LastUpdate).TotalMinutes < 30)
                 return;
 
             System.Net.WebClient client = new System.Net.WebClient();
             string page = client.DownloadString("http://e621.net");
 
-            System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex(@"Serving ([0-9],]+) posts");
+            System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex(@"Serving ([0-9],+) posts");
             var match = image.Match(page);
 
             if (match.Success)
             {
-                e621Posts = int.Parse(match.Groups[0].Value.Replace(",",""));
+                e621Posts = int.Parse(match.Groups[1].Value.Replace(",",""));
             }
             else
                 logger.log("Couldn't read porncount :(", CedLib.Logging.Priority.Error);
@@ -230,10 +230,11 @@ namespace OnyToys
 
                 string imageURL = "Wrong somehow :|";
                 if (match.Success)
-                    imageURL = match.Groups[0].Value;
+                    imageURL = match.Groups[1].Value;
                 else
                     logger.log("Unable to find image in post " + post.ToString(), CedLib.Logging.Priority.Error);
 
+                responsebuilder.Append("http://e621.net"); 
                 responsebuilder.Append(imageURL);
                 responsebuilder.Append(" [NSFW]");
             }
