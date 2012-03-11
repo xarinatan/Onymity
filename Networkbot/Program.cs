@@ -104,25 +104,25 @@ namespace Onymity
         static void LoadPlugins(string _dir = "./Plugins/")
         {
             DirectoryInfo PluginDir = new System.IO.DirectoryInfo(_dir);
-            foreach (FileInfo finfo in PluginDir.GetFiles("*", SearchOption.TopDirectoryOnly))
+            foreach (FileInfo finfo in PluginDir.GetFiles("*.dll", SearchOption.TopDirectoryOnly))
             {
                 Plugins.Add(Assembly.LoadFile(finfo.FullName), false);
             }
 
             foreach (var plugin in Plugins)
             {
-                try
-                {
-                    Type[] types = plugin.Key.GetTypes();
-                    logger.log("Loading plugin: " + plugin.Key.GetName(), Logging.Priority.Notice);
-                    MethodInfo main = types.First(kp => kp.Name == "Augmentation").GetMethod("Main", BindingFlags.Public | BindingFlags.Static);
-                    main.Invoke(new object(), new object[] { bstuff });
-                    logger.log("Succesfully loaded: " + plugin.Key.GetName(), Logging.Priority.Info);
-                }
-                catch (Exception ex)
-                {
-                    logger.logerror(ex); logger.log("Failed to load plugin: " + plugin.Key.FullName, Logging.Priority.Warning);
-                }
+                    try
+                    {
+                        Type[] types = plugin.Key.GetTypes();
+                        logger.log("Loading plugin: " + plugin.Key.GetName(), Logging.Priority.Notice);
+                        MethodInfo main = types.First(kp => kp.Name == "Augmentation").GetMethod("Main", BindingFlags.Public | BindingFlags.Static);
+                        main.Invoke(new object(), new object[] { bstuff });
+                        logger.log("Succesfully loaded: " + plugin.Key.GetName(), Logging.Priority.Info);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.logerror(ex); logger.log("Failed to load plugin: " + plugin.Key.FullName, Logging.Priority.Warning);
+                    }
             }
         }
 

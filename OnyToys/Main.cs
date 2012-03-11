@@ -25,9 +25,9 @@ namespace OnyToys
             Botstuff.OnyVariables.SharedUnprivelegedFunctionDict.Add("recommendurl", new KeyValuePair<string, Func<BotFunctionData, string>>("I might know a few nice things around the net! (USE AT VIEWER DESCRETION :3)", new Func<BotFunctionData, string>(unPrivFunctions.geturl)));
             Botstuff.OnyVariables.SharedUnprivelegedFunctionDict.Add("8ball", new KeyValuePair<string, Func<BotFunctionData, string>>("Ask a question that can be answered by yes or no, and i shall deliver!", new Func<BotFunctionData, string>(unPrivFunctions.eightball)));
             Botstuff.OnyVariables.SharedUnprivelegedFunctionDict.Add("getquote", new KeyValuePair<string, Func<BotFunctionData, string>>("Gets a quote on your car insurance, obviously.", new Func<BotFunctionData, string>(unPrivFunctions.GetQuote)));
-
+            Botstuff.OnyVariables.SharedUnprivelegedFunctionDict.Add("recommendsmut", new KeyValuePair<string, Func<BotFunctionData, string>>("Lovely smut <3.", new Func<BotFunctionData, string>(unPrivFunctions.recommendporn)));
         }
-
+         
     }
 
     public class Toys
