@@ -222,21 +222,34 @@ namespace OnyToys
             {
                 Random postNumber = new Random();
                 System.Net.WebClient client = new System.Net.WebClient();
-                int post = postNumber.Next(1,e621Posts);
-                string page = client.DownloadString("http://e621.net/post/show/" + post.ToString());
-
-                System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex("Size:.*href=\"([^\"]+)");
-                var match = image.Match(page);
-
                 string imageURL = "Wrong somehow :|";
-                if (match.Success)
-                    imageURL = match.Groups[1].Value;
-                else
-                    logger.log("Unable to find image in post " + post.ToString(), CedLib.Logging.Priority.Error);
+                string rating = "None :|";
 
-                responsebuilder.Append("http://e621.net"); 
+                do
+                {
+                    int post = postNumber.Next(1, e621Posts);
+                    string page = client.DownloadString("http://e621.net/post/show/" + post.ToString());
+
+                    System.Text.RegularExpressions.Regex image = new System.Text.RegularExpressions.Regex("Size:.*href=\"([^\"]+)");
+                    System.Text.RegularExpressions.Regex ratex = new System.Text.RegularExpressions.Regex("Rating:.*(Safe|Explicit|Questionable)");
+                    var match = image.Match(page);
+
+                    if (match.Success)
+                    {
+                        imageURL = match.Groups[1].Value;
+
+                        match = ratex.Match(page);
+
+                        if (match.Success)
+                            rating = match.Groups[1].Value;
+                    }
+                    else
+                        logger.log("Unable to find image in post " + post.ToString() + ", skipping", CedLib.Logging.Priority.Notice);
+                }
+                while (imageURL == "Wrong somehow :|");
+
                 responsebuilder.Append(imageURL);
-                responsebuilder.Append(" [NSFW]");
+                responsebuilder.Append(" [" + rating + "]");
             }
 
             return responsebuilder.ToString();
