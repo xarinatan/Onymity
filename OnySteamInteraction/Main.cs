@@ -14,7 +14,7 @@ namespace OnySteamInteraction
         static Dictionary<string, KeyValuePair<string, Func<SteamStuff.BotFunctionData, string>>> PrivFunctDict = new Dictionary<string, KeyValuePair<string, Func<SteamStuff.BotFunctionData, string>>>();
         static SteamToys unprivSteamToys;
         public static OnyLib.BotStuff Botstuff;
-        static List<IPAddress> AllowedSteamClientIPs = new List<IPAddress>() { IPAddress.Loopback, IPAddress.Parse("192.168.5.200") };
+        static List<IPAddress> AllowedSteamClientIPs = new List<IPAddress>() { IPAddress.Loopback, IPAddress.Parse("192.168.5.200"), IPAddress.Parse("192.168.5.50") };
         public static void Main(object _BotStuff)
         {
             Botstuff = (OnyLib.BotStuff)_BotStuff;
