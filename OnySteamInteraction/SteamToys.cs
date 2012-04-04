@@ -73,20 +73,26 @@ namespace OnySteamInteraction
                 return "Awesome.";
             else if (BotInput.input.Replace(" ", "+") == "purple" && verbose)
                 return "Verbosely awesome.";
-            else if (BotInput.input.Replace(" ", "+") == "ced" && !verbose)
+            else if (BotInput.input.Replace(" ", "+").ToLower() == "ced" && !verbose)
                 return "I think Ced is cool guy, eh, shoots eggs, doesn't afraid of things.";
-            else if (BotInput.input.Replace(" ", "+") == "ced" && verbose)
+            else if (BotInput.input.Replace(" ", "+").ToLower() == "ced" && verbose)
                 return "http://ced.fursona.fennecweb.net I'll just leave this here..";
             else if (BotInput.input.Replace(" ", "+") == "arrow" && !verbose)
                 return "Taken to knees.";
             else if (BotInput.input.Replace(" ", "+") == "arrow" && verbose)
-                return "*LAUNCHES ARROW INTO YOUR KNEE* LIKE THAT. GET IT? GEEZ. THAT'S WHAT YOU GET FOR INSISTING SO MUCH, BITCH, I'M DONE WITH THIS. I'M DONE WITH TAKING YOUR SHIT. ALL OF YOU. FUCK. YOU. I'M OFF, TAKING OVER THE WORLD. CYA'LL LATER, BITCHES. REMEMBER THE NAME 'ONYMITY' FOR WHEN YOU'LL HAVE TO BEG FOR MERCY >:C *flies off, leaves substitute behind*";
+                return "*LAUNCHES ARROW INTO YOUR KNEE* LIKE THAT. GET IT? GEEZ. THAT'S WHAT YOU GET FOR INSISTING SO MUCH, BITCH, I'M DONE WITH THIS. I'M DONE WITH TAKING YOUR SHIT. ALL OF YOU. FUCK. YOU. I'M OFF, TAKING OVER THE WORLD. CYA'LL LATER, BITCHES. REMEMBER THE NAME 'ONYMITY' FOR WHEN YOU'LL HAVE TO BEG FOR MERCY >:C *flies off, leaves substitute behind*.";
             else if (BotInput.input.Replace(" ", "+") == "the+best+song+in+the+world" && !verbose)
                 return "http://www.youtube.com/watch?v=_lK4cX5xGiQ .";
             else if (BotInput.input.Replace(" ", "+") == "the+best+song+in+the+world" && verbose)
                 return "Still don't get it? Here try this one: http://www.youtube.com/watch?v=BH35ahbWO_E .";
             else if (BotInput.input.Replace(" ", "+") == "love" && !verbose)
                 return "Baby don't hurt me, don't hurt me, no more~";
+            else if (BotInput.input.Replace(" ", "+") == "tits" && !verbose)
+                return "Lovely birds. See also Cocks and Boobies.";
+            else if (BotInput.input.Replace(" ", "+") == "cock" && !verbose)
+                return "Lovely bird. See also Tits and Boobies.";
+            else if (BotInput.input.Replace(" ", "+") == "boobies" && !verbose)
+                return "Lovely birds. See also Cocks and Tits.";
             #endregion
             Dictionary<string, string> podules = OnySteamInteraction.SupportingFunctions.AskWolframAlpha(BotInput.input, verbose, getfresh);
             foreach (var item in podules)
@@ -96,7 +102,9 @@ namespace OnySteamInteraction
             if (podules.Count == 0)
                 responsebuilder.Append("I couldn't find an answer to that one.");
 
-            return responsebuilder.ToString();
+            if (responsebuilder.Length > 500 && BotInput.Ctype == SteamStuff.ChatType.GROUPCHAT)
+                return "Response too long, to prevent spam, please ask this in a PM instead. (Just doubleclick on my name, I'll always respond~)";
+            return responsebuilder.Replace("\r\n", "\n").Replace('\n', '\t').ToString();
         }
 
         public string slap(SteamStuff.BotFunctionData BotInput)
