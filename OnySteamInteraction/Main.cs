@@ -14,6 +14,8 @@ namespace OnySteamInteraction
         static Dictionary<string, KeyValuePair<string, Func<SteamStuff.BotFunctionData, string>>> PrivFunctDict = new Dictionary<string, KeyValuePair<string, Func<SteamStuff.BotFunctionData, string>>>();
         static SteamToys unprivSteamToys;
         public static OnyLib.BotStuff Botstuff;
+        static SteamKit2.SteamClient sclient;
+
         static List<IPAddress> AllowedSteamClientIPs = new List<IPAddress>() { IPAddress.Loopback, IPAddress.Parse("192.168.5.200"), IPAddress.Parse("192.168.5.50") };
         public static void Main(object _BotStuff)
         {
@@ -22,6 +24,12 @@ namespace OnySteamInteraction
             addfunctions();
             Botstuff.OnyEvents.InComingMessage += new BotStuff.BotEvents.IncomingMessageHook(OnyEvents_InComingMessage);
             Botstuff.OnyVariables.logger.log("Hello from SteamInteraction!", Logging.Priority.Notice);
+            sclient = new SteamKit2.SteamClient(System.Net.Sockets.ProtocolType.Tcp);
+            SteamKit2.SteamFriends steamFriends = sclient.GetHandler<SteamKit2.SteamFriends>();
+            SteamKit2.SteamUser sUser = sclient.GetHandler<SteamKit2.SteamUser>();
+            sclient.Connect();
+            sUser.LogOn(new SteamKit2.SteamUser.LogOnDetails() { Username = "megal33t", Password = "0fqwoh" });
+            steamFriends.SendChatMessage(new SteamKit2.SteamID("STEAM_0:1:16516144"), SteamKit2.EChatEntryType.ChatMsg, "Hai dar");
         }
 
         static void OnyEvents_InComingMessage(OnyLib.BotStuff.BotEvents.IncomingMessageEventData Args)

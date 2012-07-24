@@ -99,7 +99,11 @@ namespace OnyLib
         {
             public RuntimeVariables()
             {
-                persistence = new XMLPersistenceDictionary(logger, "funcpersistence.xml", false);
+                string filename = "settings.xml";
+
+                persistence = new XMLPersistenceDictionary(logger, filename, false);
+                if (!System.IO.File.Exists(filename))
+                    persistence.save();
             }
             public Logging logger = new Logging(true, true);
             public XMLPersistenceDictionary persistence;

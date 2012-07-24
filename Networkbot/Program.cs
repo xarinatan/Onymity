@@ -32,6 +32,7 @@ namespace Onymity
             Donify = bstuff.OnyVariables.Donify;
             logger = bstuff.OnyVariables.logger;
             nstruct = bstuff.OnyVariables.nstruct;
+            
             bstuff.OnyVariables.persistence.load();
             LoadPlugins();
             bstuff.OnyEvents.InComingMessage += new BotStuff.BotEvents.IncomingMessageHook(OnyEvents_InComingMessage);
@@ -104,6 +105,8 @@ namespace Onymity
         static void LoadPlugins(string _dir = "./Plugins/")
         {
             DirectoryInfo PluginDir = new System.IO.DirectoryInfo(_dir);
+            if (!PluginDir.Exists)
+                PluginDir.Create();
             foreach (FileInfo finfo in PluginDir.GetFiles("*.dll", SearchOption.TopDirectoryOnly))
             {
                 Plugins.Add(Assembly.LoadFile(finfo.FullName), false);
