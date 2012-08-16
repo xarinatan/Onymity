@@ -10,6 +10,7 @@ namespace OnyLib
     namespace AI
     {
         #region Dictionary-based sentence AI
+        //This is a work in progress.
         public class DictionaryConstruct
         {
             #region vars
@@ -153,7 +154,7 @@ namespace OnyLib
                 string[] splittedinput = input.Split(' ');
                 foreach (var word in splittedinput)
                 {
-                    if (!aliasses.Contains(word))
+                    if (!aliasses.Contains(word.ToLower()))
                         output.Append(word + " ");
                 }
                 return output.ToString();
@@ -321,10 +322,21 @@ namespace OnyLib
                     stringtoparse = stringtoparse.Replace(blackchar, "");
                 }
                 string[] splittedstring = stringtoparse.Split(' ');
+                List<string> toParseString = new List<string>();
+                for (int i = 0; i < splittedstring.Length; i++)
+                {
+                    if (splittedstring.Length-1 <= i)
+                        break;
+                    System.Uri asdfasdf;
+                    if (System.Uri.TryCreate(splittedstring[i], UriKind.Absolute, out asdfasdf))
+                        continue; //Don't want to add URIs to bot!
+                    toParseString.Add(splittedstring[i] + " " + splittedstring[i + 1]);
+                    i++;
+                }
                 int parsetimes = 3;
                 for (int i = 0; i < parsetimes; i++)
                 {
-                    runparse(splittedstring);
+                    runparse(toParseString.ToArray());
                 }
 
                 timesparsedsincelastpurge++;
@@ -338,10 +350,8 @@ namespace OnyLib
                     if (!(splittedstring[i].Length == 0))
                         if (!blacklist.Contains(splittedstring[i].ToLower())) //if the word is not in the blacklist
                         {
-                            System.Uri asdfasdf;
-                            if (System.Uri.TryCreate(splittedstring[i], UriKind.Absolute, out asdfasdf))
-                                continue; //Don't want to add URIs to bot!
-                            splittedstring[i] = splittedstring[i].ToLower(); //make all the letters of a sentence small. Possibly bad idea because of smilies.
+                            
+                            //splittedstring[i] = splittedstring[i].ToLower(); //make all the letters of a sentence small. Possibly bad idea because of smilies.
                             if (i == 0)
                             {
                                 char firstchar = splittedstring[i][0];

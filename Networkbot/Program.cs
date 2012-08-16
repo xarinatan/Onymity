@@ -32,7 +32,8 @@ namespace Onymity
             Donify = bstuff.OnyVariables.Donify;
             logger = bstuff.OnyVariables.logger;
             nstruct = bstuff.OnyVariables.nstruct;
-            
+            if (!File.Exists("funcpersistence.xml"))
+                bstuff.OnyVariables.persistence.save();
             bstuff.OnyVariables.persistence.load();
             LoadPlugins();
             bstuff.OnyEvents.InComingMessage += new BotStuff.BotEvents.IncomingMessageHook(OnyEvents_InComingMessage);
@@ -91,8 +92,8 @@ namespace Onymity
                     break;
 
                 case "talkandlearn":
-                    logger.log("Got: " + Args.msg.ExtraneousLines[0], Logging.Priority.Info);
-                    nstruct.parsestring(Args.msg.ExtraneousLines[0]);
+                    logger.log("Got: " + Args.msg.ExtraneousLines[2], Logging.Priority.Info);
+                    nstruct.parsestring(Args.msg.ExtraneousLines[2]);
                     string response = nstruct.MakeResponse();
                     logger.log("Reply: " + response, Logging.Priority.Info);
                     Args.ToReturn.Add(response);

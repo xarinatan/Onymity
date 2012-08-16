@@ -29,7 +29,7 @@ namespace NetworkbotClienttest
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             s.Connect("localhost", 5000);
             //CedLib.Networking.socketfunctions.sendstring(s, "talk");
-            CedLib.Networking.socketfunctions.sendstring(s, "interactsteam\n" + textBox_steamname.Text + "\n" + textBox_steamID.Text + "\n" + textBox_chattype.Text + "\n" + sendstring);
+            CedLib.Networking.socketfunctions.sendstring(s, "talkandlearn\n" + textBox_steamname.Text + "\n" + textBox_steamID.Text + "\n" + textBox_chattype.Text + "\n" + sendstring);
             if (CedLib.Networking.socketfunctions.waitfordata(s, 30000, false))
             {
                 return CedLib.Networking.socketfunctions.receivestring(s, false);
