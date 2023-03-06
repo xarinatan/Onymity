@@ -79,10 +79,9 @@ namespace OnyLib
                 "The cat is a limbo dancer.",
                 "The dog hates cats.", 
                 "Little Mary had a flute.", 
-                "Cheese is always a good answer.", 
-                "Benji is a faggot.", 
-                "Faggots are cigarretes.", 
-                "Y U NO CHEESE" ,
+                "Cheese is always a good answer.",  
+                "I like to play flute" ,
+                "Cats are fascinating creatures."
 
                 })
                     {
